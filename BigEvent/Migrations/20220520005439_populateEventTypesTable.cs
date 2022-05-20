@@ -1,24 +1,30 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BigEvent.Data.Migrations
+namespace BigEvent.Migrations
 {
-    public partial class PopulateEvenTypesTable : Migration
+    public partial class populateEventTypesTable : Migration
     {
-
         protected override void Up(MigrationBuilder migrationBuilder)
         {
 
-            migrationBuilder
-                .InsertData(
-                table: "EventTypes",
-                columns: new[] { "Id", "Name" },
-                values: new object[] { 1, "music gig" });
 
             migrationBuilder
                 .InsertData(
                 table: "EventTypes",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { 2, "business meeting" });
+                values: new object[] { 1, "other" });
+
+            migrationBuilder
+                .InsertData(
+                table: "EventTypes",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 2, "music gig" });
+
+            migrationBuilder
+                .InsertData(
+                table: "EventTypes",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 3, "business meeting" });
 
             migrationBuilder
                 .InsertData(
@@ -52,6 +58,5 @@ namespace BigEvent.Data.Migrations
             migrationBuilder.DeleteData(table: "EventTypes", keyColumn: "Id", keyValue: 5);
             migrationBuilder.DeleteData(table: "EventTypes", keyColumn: "Id", keyValue: 6);
         }
-
     }
 }

@@ -2,7 +2,7 @@
 
 namespace BigEvent.Models
 {
-    public class Organizator:IdentityUser
+    public class Organizer:IdentityUser
     {
         public string Name { get; set; }
 

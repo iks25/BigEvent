@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace BigEvent.Models
@@ -15,9 +16,9 @@ namespace BigEvent.Models
         public IdentityUser User { get; set; }
         
         [Required]
-        public DataType Data { get; set; }
+        public DateTime DateTime { get; set; }
 
-
+        [Required]
         public EventType Type { get; set; }
         public float TicketPrice { get; set; }
     }
