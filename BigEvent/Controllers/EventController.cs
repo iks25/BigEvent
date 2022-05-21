@@ -37,5 +37,12 @@ namespace BigEvent.Controllers
 
             return View(viewItem);
         }
+        [HttpPost]
+        public IActionResult Create(EventViewModel eventViewModel)
+        {
+            var data1 = eventViewModel.Date;
+            var time = eventViewModel.Time;
+            return Content("test");
+        }
     }
 }
