@@ -13,13 +13,24 @@ namespace BigEvent.Models
         public string Name { get; set; }
 
         [Required]
-        public IdentityUser User { get; set; }
-        
+        public string Address { get; set; }
+        public string Description { get; set; }
+
+        public IdentityUser Organizer { get; set; }
+
+        [Required]
+        public string OrganizerId { get; set; }
+
         [Required]
         public DateTime DateTime { get; set; }
 
-        [Required]
+
         public EventType Type { get; set; }
+
+        [Required]
+        public int EventTypeId { get; set; }
+
+
         public float TicketPrice { get; set; }
     }
 }

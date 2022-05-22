@@ -1,9 +1,13 @@
 ﻿using BigEvent.Data;
+using BigEvent.Models;
 using BigEvent.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 
 namespace BigEvent.Controllers
 {
@@ -20,6 +24,7 @@ namespace BigEvent.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             var listSelectedItems = new List<SelectListItem>();
@@ -28,7 +33,7 @@ namespace BigEvent.Controllers
                 listSelectedItems
                 .Add(new SelectListItem()
                 {
-                    Value = eventType.Name,
+                    Value = eventType.Id + "",
                     Text = eventType.Name
                 });
 
@@ -38,11 +43,23 @@ namespace BigEvent.Controllers
             return View(viewItem);
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Create(EventViewModel eventViewModel)
         {
-            var data1 = eventViewModel.Date;
-            var time = eventViewModel.Time;
-            return Content("test");
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId    
+
+            var newEvent = new Event()
+            {
+                Name = eventViewModel.Name,
+                OrganizerId = userId,
+                EventTypeId = eventViewModel.EventType,
+                DateTime = DateTime.Parse($"{eventViewModel.Date} {eventViewModel.Time}"),
+                Address = eventViewModel.Address
+            };
+
+            _dbContext.Events.Add(newEvent);
+            _dbContext.SaveChanges();
+            return Content("done");
         }
     }
 }

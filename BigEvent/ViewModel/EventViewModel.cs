@@ -21,6 +21,8 @@ namespace BigEvent.ViewModel
         [DataType(DataType.Time)]
         public string Time { get; set; }
 
+        [Required]
+        public string Address { get; set; }
 
         public List<SelectListItem> Types { get; set; }
         public int EventType { get; set; }
