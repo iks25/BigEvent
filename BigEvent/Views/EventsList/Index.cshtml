@@ -1,0 +1,18 @@
+﻿@using BigEvent.ViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<EventsListViewModel>
+<h2>Events List</h2>
+
+<ul>
+    @foreach (var _event in @Model)
+    {
+        <li>@_event.Name</li>
+        <li>@_event.Date</li>
+        <li>@_event.Time</li>
+        <li>@_event.DateOfTheWeek</li>
+        <li>@_event.HostName</li>
+
+    }
+</ul>
