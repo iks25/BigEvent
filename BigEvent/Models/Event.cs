@@ -16,10 +16,10 @@ namespace BigEvent.Models
         public string Address { get; set; }
         public string Description { get; set; }
 
-        public IdentityUser Organizer { get; set; }
+        public Organizer Organizer { get; set; }
 
         [Required]
-        public string OrganizerId { get; set; }
+        public int OrganizerId { get; set; }
 
         [Required]
         public DateTime DateTime { get; set; }
@@ -33,4 +33,5 @@ namespace BigEvent.Models
 
         public float TicketPrice { get; set; }
     }
+
 }

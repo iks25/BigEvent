@@ -47,11 +47,12 @@ namespace BigEvent.Controllers
         public IActionResult Create(EventViewModel eventViewModel)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId    
-
+            //TODO find Organizer by userId
+            var OrganizerID = 0;
             var newEvent = new Event()
             {
                 Name = eventViewModel.Name,
-                OrganizerId = userId,
+                OrganizerId = OrganizerID,
                 EventTypeId = eventViewModel.EventType,
                 DateTime = DateTime.Parse($"{eventViewModel.Date} {eventViewModel.Time}"),
                 Address = eventViewModel.Address
