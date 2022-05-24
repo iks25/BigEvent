@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BigEvent.Data
 {
-    public class AplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser
     {
         [Required]
         public UserType Type { get; set; }

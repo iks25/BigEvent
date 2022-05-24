@@ -4,15 +4,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BigEvent.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<AplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Event> Events { get; set; }
         public DbSet<EventType> EventTypes { get; set; }
 
         public DbSet<Organizer> Organizers { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+       : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
         }
     }
 }

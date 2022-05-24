@@ -32,9 +32,19 @@ namespace BigEvent
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            /*services.AddDefaultIdentity<AplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews();*/
+
+            /*  services.AddDefaultIdentity<AplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                  .AddEntityFrameworkStores<ApplicationDbContext>();
+              services.AddControllersWithViews();*/
+
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+        .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,8 +66,12 @@ namespace BigEvent
 
             app.UseRouting();
 
+
+
             app.UseAuthentication();
             app.UseAuthorization();
+
+
 
             app.UseEndpoints(endpoints =>
             {
