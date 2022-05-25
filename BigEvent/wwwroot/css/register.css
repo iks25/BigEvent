@@ -1,0 +1,11 @@
+﻿.register-container {
+    background-color: white;
+    border: 1px solid #00000040;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
