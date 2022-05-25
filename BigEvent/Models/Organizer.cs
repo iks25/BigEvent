@@ -20,6 +20,6 @@ namespace BigEvent.Models
         public ApplicationDbContext IdentityUser { get; set; }
 
         [Required]
-        string ApplicationDbContextId { get; set; }
+        public string ApplicationDbContextId { get; set; }
     }
 }
