@@ -27,8 +27,6 @@ namespace BigEvent.Controllers
                 eventList.Add(new EventsListViewModel(item));
             }
 
-
-
             return View(eventList);
         }
     }

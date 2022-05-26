@@ -10,6 +10,8 @@ namespace BigEvent.Data
         public DbSet<EventType> EventTypes { get; set; }
 
         public DbSet<Organizer> Organizers { get; set; }
+
+        public DbSet<Image> Images { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
        : base(options)
         {
