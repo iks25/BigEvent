@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using BigEvent.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -27,5 +28,6 @@ namespace BigEvent.ViewModel
         public List<SelectListItem> Types { get; set; }
         public int EventType { get; set; }
         public float TicketPrice { get; set; }
+        public List<Image> ImagesInGallery { get; set; }
     }
 }

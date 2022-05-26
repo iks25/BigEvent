@@ -38,7 +38,13 @@ namespace BigEvent.Controllers
                 });
 
             });
-            var viewItem = new EventViewModel() { Types = listSelectedItems };
+            var images = _dbContext.Images.ToList<Image>();
+            var viewItem = new EventViewModel()
+            {
+                Types = listSelectedItems,
+                ImagesInGallery = images
+
+            };
 
             return View(viewItem);
         }
@@ -47,7 +53,7 @@ namespace BigEvent.Controllers
         public IActionResult Create(EventViewModel eventViewModel)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId    
-            //TODO find Organizer by userId
+
             var organize = _dbContext.Organizers.Single(user => user.ApplicationDbContextId == userId);
 
             var newEvent = new Event()

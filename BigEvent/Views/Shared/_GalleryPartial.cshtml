@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Image>
 
 
 <div class="gallery-bg">
@@ -15,80 +15,24 @@
             <div class="scroll-div">
                 <div class="gallery-content">
 
-                    @*==========================*@
-                    <div class="gallery-picture-container">
-                        <div class="m-auto">
-                            <img class="img-center" src="~/imagesGallery/busness.jpg" alt="busness" width="100%" />
-                        </div>
-                        <div class="gallery-picture-title">
-                            business
-                        </div>
-                    </div>
 
-                    @*==========================*@
+                    @foreach (var item in Model)
+                    {
+                        <div class="gallery-picture-container">
+                            <div class="m-auto">
+                                <img class="img-center" src="@item.Src" alt="@item.Name" width="100%" />
+                            </div>
+                            <div class="gallery-picture-title">
+                                @item.Name
+                            </div>
+                        </div>
+                    }
 
-                    <div class="gallery-picture-container">
-                        <div class="m-auto">
-                            <img class="img-center" src="~/imagesGallery/busness.jpg" alt="busness" width="100%" />
-                        </div>
-                        <div class="gallery-picture-title">
-                            business
-                        </div>
-                    </div>
-                    <div class="gallery-picture-container">
-                        <div class="m-auto">
-                            <img class="img-center" src="~/imagesGallery/busness.jpg" alt="busness" width="100%" />
-                        </div>
-                        <div class="gallery-picture-title">
-                            business
-                        </div>
-                    </div>
-                    <div class="gallery-picture-container">
-                        <div class="m-auto">
-                            <img class="img-center" src="~/imagesGallery/busness.jpg" alt="busness" width="100%" />
-                        </div>
-                        <div class="gallery-picture-title">
-                            business
-                        </div>
-                    </div>
-                    <div class="gallery-picture-container">
-                        <div class="m-auto">
-                            <img class="img-center" src="~/imagesGallery/busness.jpg" alt="busness" width="100%" />
-                        </div>
-                        <div class="gallery-picture-title">
-                            business
-                        </div>
-                    </div>
-                    <div class="gallery-picture-container">
-                        <div class="m-auto">
-                            <img class="img-center" src="~/imagesGallery/busness.jpg" alt="busness" width="100%" />
-                        </div>
-                        <div class="gallery-picture-title">
-                            business
-                        </div>
-                    </div>
-                    <div class="gallery-picture-container">
-                        <div class="m-auto">
-                            <img class="img-center" src="~/imagesGallery/busness.jpg" alt="busness" width="100%" />
-                        </div>
-                        <div class="gallery-picture-title">
-                            business
-                        </div>
-                    </div><div class="gallery-picture-container">
-                        <div class="m-auto">
-                            <img class="img-center" src="~/imagesGallery/busness.jpg" alt="busness" width="100%" />
-                        </div>
-                        <div class="gallery-picture-title">
-                            business
-                        </div>
-                    </div><div class="gallery-picture-container">
-                        <div class="m-auto">
-                            <img class="img-center" src="~/imagesGallery/busness.jpg" alt="busness" width="100%" />
-                        </div>
-                        <div class="gallery-picture-title">
-                            business
-                        </div>
-                    </div>
+                    
+
+
+
+
                 </div>
 
             </div>
