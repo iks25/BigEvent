@@ -1,4 +1,7 @@
 ﻿@model BigEvent.ViewModel.EventViewModel
+@section StyleCssPartial{
+<link rel="stylesheet" href="~/css/gallery.css" />
+}
 
 @{
     ViewData["Title"] = "Create";
@@ -57,6 +60,8 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+<partial name="_GalleryPartial" />
 
 @section Scripts {
     @{
