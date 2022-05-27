@@ -50,7 +50,7 @@ namespace BigEvent.Controllers
         }
         [HttpPost]
         [Authorize]
-        public IActionResult Create(EventViewModel eventViewModel)
+        public IActionResult Create(EventViewModel eventVM)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId    
 
@@ -58,11 +58,12 @@ namespace BigEvent.Controllers
 
             var newEvent = new Event()
             {
-                Name = eventViewModel.Name,
-                EventTypeId = eventViewModel.EventType,
-                DateTime = DateTime.Parse($"{eventViewModel.Date} {eventViewModel.Time}"),
-                Address = eventViewModel.Address,
-                Organizer = organize
+                Name = eventVM.Name,
+                EventTypeId = eventVM.EventType,
+                DateTime = DateTime.Parse($"{eventVM.Date} {eventVM.Time}"),
+                Address = eventVM.Address,
+                Organizer = organize,
+                ImageId = eventVM.ChosenImageId
             };
 
             _dbContext.Events.Add(newEvent);

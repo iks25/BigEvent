@@ -52,6 +52,10 @@
                        aria-label="choose img">
                     @Model.ImagesInGallery[0].Name
                 </label>
+                <input id="chosenImageInput"
+                       asp-for="ChosenImageId"
+                       value="@Model.ImagesInGallery[0].ImageId"
+                       style="display:none" />
                 <div class="input-group-prepend">
                     <div class="input-group-text"
                          onclick="showGalleryPicker()" style="cursor:pointer">

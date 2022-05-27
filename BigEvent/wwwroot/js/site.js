@@ -11,9 +11,8 @@ function chooseImage(item) {
     let pictureSrc = item.getAttribute("data-pictureSrc");
     let pictureName = item.getAttribute("data-pictureName");
 
-
-    let lll = $('#chosenImage')[0];
-    lll.innerHTML = pictureName;
+    $('#chosenImageInput')[0].setAttribute("value", pictureId);
+    $('#chosenImage')[0].innerHTML = pictureName;
 
 
     changeSelectedImageDiv(item)

@@ -30,6 +30,11 @@ namespace BigEvent.Models
         [Required]
         public int EventTypeId { get; set; }
 
+        public Image Image { get; set; }
+
+        [Required]
+        public int ImageId { get; set; }
+
 
         public float TicketPrice { get; set; }
     }

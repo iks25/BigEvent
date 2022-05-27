@@ -24,18 +24,18 @@
 
                         var imgId = "galleryImg" + item.ImageId;
 
-                        <div id=@imgId class="gallery-picture-container @activeClass"
+                            <div id=@imgId class="gallery-picture-container @activeClass"
                          data-pictureId=@item.ImageId
                          data-pictureSrc=@item.Src
                          data-pictureName=@item.Name
                          onclick="chooseImage(this)">
-                            <div class="m-auto">
-                                <img class="img-center " src="@item.Src" alt="@item.Name" style="width:100%" />
-                            </div>
-                            <div class="gallery-picture-title">
+                                <div class="m-auto">
+                                    <img class="img-center " src="@item.Src" alt="@item.Name" style="width:100%" />
+                                </div>
+                                <div class="gallery-picture-title">
                                 @item.Name
+                                </div>
                             </div>
-                        </div>
                     }
 
                 </div>
