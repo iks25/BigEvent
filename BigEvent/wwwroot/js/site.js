@@ -1,7 +1,6 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
 
-// Write your JavaScript code.
+$("#gallery-bg").hide();
 /**
  * 
  * @param {HTMLDivElement} item
@@ -11,7 +10,7 @@ function chooseImage(item) {
     let pictureId = item.getAttribute("data-pictureId");
 
     changeSelectedImageDiv(item)
-    //TODO Change custom Input
+    //TODO Change custom Input for pick item
 }
 /**
  *
@@ -23,6 +22,19 @@ function changeSelectedImageDiv(selectedDiv) {
 
     selectedDiv.classList.add("chosen-img");
 }
+
+
+function closeGalleryPicker() {
+    console.log("close");
+    $("#gallery-bg").hide();
+}
+
+function showGalleryPicker() {
+    console.log("close");
+    $("#gallery-bg").show();
+}
+
+
 
 $(document).ready(() => {
 

@@ -1,7 +1,7 @@
 ﻿@model List<Image>
 
 
-<div class="gallery-bg">
+<div id="gallery-bg" class="gallery-bg">
 
     <div class="gallery-container">
         <div class="gallery-frame">
@@ -9,7 +9,7 @@
             <div class="gallery-head">
                 <div class="galleryTitle text-center font-title">
                     Chose Picture
-                    <button class="close-gallery">X</button>
+                    <button class="close-gallery" onclick="closeGalleryPicker()">X</button>
                 </div>
             </div>
             <div class="scroll-div">
@@ -22,7 +22,7 @@
 
                         <div id=@imgId class="gallery-picture-container" data-pictureId=@item.ImageId onclick="chooseImage(this)">
                             <div class="m-auto">
-                                <img class="img-center" src="@item.Src" alt="@item.Name" width="100%" />
+                                <img class="img-center " src="@item.Src" alt="@item.Name" style="width:100%" />
                             </div>
                             <div class="gallery-picture-title">
                                 @item.Name

@@ -29,5 +29,7 @@ namespace BigEvent.ViewModel
         public int EventType { get; set; }
         public float TicketPrice { get; set; }
         public List<Image> ImagesInGallery { get; set; }
+
+        public int ChosenImageId { get; set; }
     }
 }
