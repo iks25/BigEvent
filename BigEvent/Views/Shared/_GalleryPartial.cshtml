@@ -18,7 +18,9 @@
 
                     @foreach (var item in Model)
                     {
-                        <div class="gallery-picture-container">
+                        var imgId = "galleryImg" + item.ImageId;
+
+                        <div id=@imgId class="gallery-picture-container" data-pictureId=@item.ImageId onclick="chooseImage(this)">
                             <div class="m-auto">
                                 <img class="img-center" src="@item.Src" alt="@item.Name" width="100%" />
                             </div>
@@ -27,11 +29,6 @@
                             </div>
                         </div>
                     }
-
-                    
-
-
-
 
                 </div>
 
