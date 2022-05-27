@@ -1,5 +1,5 @@
 ﻿
-
+///////////////////////////////////////////////// Gallery
 $("#gallery-bg").hide();
 /**
  * 
@@ -8,6 +8,13 @@ $("#gallery-bg").hide();
 function chooseImage(item) {
     let divId = item.id;
     let pictureId = item.getAttribute("data-pictureId");
+    let pictureSrc = item.getAttribute("data-pictureSrc");
+    let pictureName = item.getAttribute("data-pictureName");
+
+
+    let lll = $('#chosenImage')[0];
+    lll.innerHTML = pictureName;
+
 
     changeSelectedImageDiv(item)
     //TODO Change custom Input for pick item
@@ -25,16 +32,14 @@ function changeSelectedImageDiv(selectedDiv) {
 
 
 function closeGalleryPicker() {
-    console.log("close");
     $("#gallery-bg").hide();
 }
 
 function showGalleryPicker() {
-    console.log("close");
     $("#gallery-bg").show();
 }
 
-
+///////////////////////////////////////////////// Gallery
 
 $(document).ready(() => {
 

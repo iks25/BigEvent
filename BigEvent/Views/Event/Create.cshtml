@@ -1,4 +1,5 @@
-﻿@model BigEvent.ViewModel.EventViewModel
+﻿@using BigEvent.ViewModel
+@model BigEvent.ViewModel.EventViewModel
 @section StyleCssPartial{
 <link rel="stylesheet" href="~/css/gallery.css" />
 }
@@ -44,7 +45,8 @@
                    onclick="showGalleryPicker()">Picture</label>
             <div class="input-group">
 
-                <label type="text" class="form-control"
+                <label id="chosenImage"
+                       type="text" class="form-control"
                        style="cursor:pointer"
                        onclick="showGalleryPicker()"
                        aria-label="choose img">
@@ -83,8 +85,15 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+@{
+    var galleryVM = new GalleryPartialViewModel()
+            {
+                Images = Model.ImagesInGallery,
+                ChosenPictureId = Model.ImagesInGallery[0].ImageId
+            };
+}
 
-<partial name="_GalleryPartial" model=Model.ImagesInGallery />
+<partial name="_GalleryPartial" model=@galleryVM />
 
 @section Scripts {
     @{

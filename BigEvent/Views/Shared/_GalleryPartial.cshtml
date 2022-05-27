@@ -1,4 +1,5 @@
-﻿@model List<Image>
+﻿@using BigEvent.ViewModel
+@model GalleryPartialViewModel
 
 
 <div id="gallery-bg" class="gallery-bg">
@@ -16,11 +17,18 @@
                 <div class="gallery-content">
 
 
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Images)
                     {
+                        var activeClass =
+                        (item.ImageId == Model.ChosenPictureId) ? "chosen-img" : "";
+
                         var imgId = "galleryImg" + item.ImageId;
 
-                        <div id=@imgId class="gallery-picture-container" data-pictureId=@item.ImageId onclick="chooseImage(this)">
+                        <div id=@imgId class="gallery-picture-container @activeClass"
+                         data-pictureId=@item.ImageId
+                         data-pictureSrc=@item.Src
+                         data-pictureName=@item.Name
+                         onclick="chooseImage(this)">
                             <div class="m-auto">
                                 <img class="img-center " src="@item.Src" alt="@item.Name" style="width:100%" />
                             </div>
