@@ -1,5 +1,5 @@
 ﻿@using BigEvent.ViewModel
-@model IEnumerable<EventsListViewModel>
+@model List<EventsListViewModel>
 @section StyleCss{
 <link rel="stylesheet" href="~/css/eventsList.css" />
 }
@@ -7,10 +7,25 @@
 <h2>Events List</h2>
 
 <div class="eventListContainer">
-    @foreach (var _event in @Model)
+    @for (var i = 0; i < @Model.Count(); i++)
     {
+        var _event = @Model[i];
+
+        if (i == 0)
+        {
+            <div class="date-separator">
+                <div class="line"></div>
+                <div class="next-day">
+                    @_event.DayOfTheWeek
+                    @_event.DateTime.ToString("MM/dd/yy")
+                </div>
+                <div class="line"></div>
+            </div>
+        }
+
+
         <div class="eventContainer">
-            <div class="event-img   ">
+            <div class="event-img">
                 <img src=@_event.ImgScr alt=@_event.ImgName />
             </div>
 
@@ -49,9 +64,15 @@
                 </div>
             </div>
         </div>
-        <hr />
 
-
+        @if (i + 1 < @Model.Count())
+        {
+            <hr />
+        }
+        <div class="date-separator">
+            <div class="line"></div>
+            <div class="next-day">12/07/22</div>
+            <div class="line"></div>
+        </div>
     }
-
 </div>
