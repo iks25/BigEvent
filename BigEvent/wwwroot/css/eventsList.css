@@ -51,7 +51,7 @@ hr {
 
 .event-type {
     font-size: 12px;
-    margin-left: 5px;
+    display: inline-block;
 }
 
 .event-time {
@@ -68,10 +68,16 @@ hr {
     position: absolute;
     right: 0;
     bottom: 0;
+    font-size: 24px;
 }
 
-@media (max-width: 769px) {
+.cursor-pointer {
+    cursor: pointer;
+}
 
+
+
+@media (max-width: 769px) {
     .event-img img {
         width: 120px;
         max-height: 110px;
@@ -92,17 +98,15 @@ hr {
 
     .event-host {
         font-size: 17px;
+        display: inline;
     }
 
     .event-type {
         font-size: 12px;
-        position: absolute;
-        left: 145px;
-        margin: 23px;
+        display: block;
     }
 
     .event-time {
         font-size: 21px;
-        margin-top: 20px;
     }
 }
