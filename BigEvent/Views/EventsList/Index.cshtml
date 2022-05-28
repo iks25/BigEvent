@@ -1,18 +1,47 @@
 ﻿@using BigEvent.ViewModel
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @model IEnumerable<EventsListViewModel>
+@section StyleCss{
+<link rel="stylesheet" href="~/css/eventsList.css" />
+}
+
 <h2>Events List</h2>
 
-<ul>
+<div class="eventListContainer">
     @foreach (var _event in @Model)
     {
-        <li>@_event.Name</li>
-        <li>@_event.Time</li>
-        <li>@_event.DateOfTheWeek</li>
-        <li>@_event.HostName</li>
+        <div class="eventContainer">
+            <div class="event-img   ">
+                <img src=@_event.ImgScr alt=@_event.ImgName />
+            </div>
+
+            <div class="">
+                <div class="event-data">
+                    @_event.DateTime.ToString("MM/dd/yyyy HH:mm")
+                </div>
+                <div class="event-name">
+                    @_event.Name
+                </div>
+                <div class="event-host-div">
+                    <a class="event-host" href="">@_event.HostName</a>
+
+
+                    <span class="event-type">
+                        @_event.Type
+                    </span>
+                </div>
+                <div class="event-time">
+                    @_event.DateTime.ToString("HH:mm")
+                </div>
+            </div>
+            <div class="event-links">
+                <div class="event-icons">
+                    dasdasdas
+                </div>
+            </div>
+        </div>
+        <hr />
 
 
     }
-</ul>
+
+</div>

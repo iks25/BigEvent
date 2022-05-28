@@ -5,6 +5,15 @@ for details on configuring this project to bundle and minify static web assets. 
     src: url(Jokerman.ttf);
 }
 
+@font-face {
+    font-family: Inter;
+    src: url(Inter-VariableFont_slnt,wght.ttf);
+}
+
+body {
+    font-family: Inter
+}
+
 :root {
     --bagroundColor: #FFFDFC;
     --color1: #FF7B00;

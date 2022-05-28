@@ -20,7 +20,7 @@ namespace BigEvent.Controllers
             var eventList = new List<EventsListViewModel>();
 
             var eventListFromDb =
-                _dbContext.Events.Include(e => e.Organizer);
+                _dbContext.Events.Include(e => e.Organizer).Include(e => e.Image).Include(e => e.Type);
 
             foreach (var item in eventListFromDb)
             {
