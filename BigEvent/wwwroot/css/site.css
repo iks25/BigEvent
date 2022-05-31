@@ -17,6 +17,11 @@ body {
 :root {
     --bagroundColor: #FFFDFC;
     --color1: #FF7B00;
+    --color2: #64380E;
+}
+
+.color2{
+    color:var(--color2);
 }
 
 .font-title {

@@ -1,0 +1,57 @@
+﻿@using BigEvent.ViewModel
+@model EventDescriptionVM
+@section StyleCss {
+    <link rel="stylesheet" href="~/css/eventDescription.css" />
+}
+<div class="row">
+    <div class="col-lg-8">
+        <div class="event-box mb-3">
+            <div>
+                <h1 class="font-title text-center mb-3 color2">
+                    @Model.Name
+                </h1>
+            </div>
+            <div class="text-center">
+                <img class="image-event"  src="@Model.ImageSrc" alt="Alternate Text" />
+            </div>
+            <div class="li"><hr /></div>
+            <div>
+                @Model.Description
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="event-box  d-flex  mb-3">
+            <div>
+                <img class="OganizerImg" src="~/imagesGallery/people/person-295.png" alt="person" />
+            </div>
+            <div class="event-detail-text pt-2">
+                <div class="small" style="color:rgb(0 0 0 / 0.70)">Organizer:</div>
+                <div>@Model.OrganizerName</div>
+
+            </div>
+        </div>
+        <div class="event-box event-detail">
+            <div><i class="bi bi-calendar3"></i></div>
+            <div class="event-detail-text mb-2">
+                @Model.DateTime.ToString("ddd dd/MM/yy")
+            </div>
+
+            <div><i class="bi bi-clock"></i></div>
+            <div class="event-detail-text mb-2">@Model.DateTime.ToString("HH:mm")</div>
+
+            <div><i class="bi bi-shop"></i></div>
+            <div class="event-detail-text">@Model.Address</div>
+        </div>
+
+        <div class="event-description-actions mt-3">
+            <button> 
+            <i class="bi bi-bell"></i>
+            Attend</button>
+            <button>f</button>
+        </div>
+
+
+
+        </div>
+    </div>

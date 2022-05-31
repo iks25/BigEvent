@@ -4,6 +4,7 @@ using BigEvent.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,26 @@ namespace BigEvent.Controllers
         {
             _dbContext = dbContext;
         }
-        public IActionResult Index()
+
+
+        public IActionResult Description(int id)
         {
-            return View();
+
+            var id2 = id + 3;
+            var currentEvent = _dbContext.Events
+                .Include(e => e.Organizer)
+                .Include(e => e.Image)
+                .Include(e => e.Type)
+                .SingleOrDefault(e => e.Id == id);
+
+            if (currentEvent == null)
+                return NotFound();
+            //TODO Redirect Message
+
+            var eventVM = new EventDescriptionVM(currentEvent);
+
+
+            return View(eventVM);
         }
 
         [Authorize]
