@@ -7,6 +7,7 @@
 <h2>Events List</h2>
 
 <div class="eventListContainer">
+    @{string previousEventTime = "";}
     @for (var i = 0; i < @Model.Count(); i++)
     {
         var _event = @Model[i];
@@ -21,6 +22,28 @@
                 </div>
                 <div class="line"></div>
             </div>
+            previousEventTime = _event.DateTime.ToString("MM/dd/yy");
+        }
+        else
+        {
+            var currentEventTime = _event.DateTime.ToString("MM/dd/yy");
+            if (!currentEventTime.Equals(previousEventTime))
+            {
+                <div class="date-separator">
+                    <div class="line"></div>
+                    <div class="next-day">
+                        @_event.DayOfTheWeek
+                        @_event.DateTime.ToString("MM/dd/yy")
+                    </div>
+                    <div class="line"></div>
+                </div>
+
+            }
+            else
+            {
+                <hr />
+            }
+            previousEventTime = _event.DateTime.ToString("MM/dd/yy");
         }
 
 
@@ -60,14 +83,7 @@
             </div>
         </div>
 
-        @if (i + 1 < @Model.Count())
-        {
-            <hr />
-        }
-        <div class="date-separator">
-            <div class="line"></div>
-            <div class="next-day">12/07/22</div>
-            <div class="line"></div>
-        </div>
+
+
     }
 </div>
