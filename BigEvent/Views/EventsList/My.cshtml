@@ -7,7 +7,9 @@
 <h2>Events List</h2>
 
 <div class="eventListContainer">
-    @{string previousEventTime = "";}
+    @{
+        string previousEventTime = "";
+    }
     @for (var i = 0; i < @Model.Count(); i++)
     {
         var _event = @Model[i];
@@ -46,49 +48,58 @@
             previousEventTime = _event.DateTime.ToString("MM/dd/yy");
         }
 
-<div class="eventContainer">
-    <a class="non-decoration" asp-controller="Event" asp-action="Description" asp-route-id="@_event.Id">
-
-        <div class="event-img">
-            <img src=@_event.ImgScr alt=@_event.ImgName />
-        </div>
-        </a>
-        <div class="">
-            <div class="event-data">
-                @_event.DateTime.ToString("MM/dd/yyyy HH:mm")
-            </div>
+        <div class="eventContainer">
             <a class="non-decoration" asp-controller="Event" asp-action="Description" asp-route-id="@_event.Id">
 
-                <div class="event-name">
-                    @_event.Name
+                <div class="event-img">
+                    <img src=@_event.ImgScr alt=@_event.ImgName />
                 </div>
             </a>
-            <div class="event-host-div">
-                <span>
+            <div class="">
+                <div class="event-data">
+                    @_event.DateTime.ToString("MM/dd/yyyy HH:mm")
+                </div>
+                <a class="non-decoration" asp-controller="Event" asp-action="Description" asp-route-id="@_event.Id">
 
-                    <a class="event-host" href="">@_event.HostName</a>
-                </span>
-                <div class="event-type">
-                    @_event.Type
+                    <div class="event-name">
+                        @_event.Name
+                    </div>
+                </a>
+                <div class="event-host-div "
+                 style="font-size:1.1em;font-weight:600; margin-top:-5px">
+
+
+                    @{
+                        var ticketPrice = (_event.Price > 0)
+                        ? "£ " + _event.Price
+                        : "free";
+                    }
+                    <span>
+                        Price: @ticketPrice |
+
+                    </span>
+                    <div class="event-type">
+                        type: @_event.Type
+                    </div>
+                </div>
+
+                <div class="event-time">
+                    @_event.DateTime.ToString("HH:mm")
                 </div>
             </div>
-            <div class="event-time">
-                @_event.DateTime.ToString("HH:mm")
+            <div class="event-links">
+
+
+
+                <div class="event-icons">
+                    <i class="bi bi-star"></i>
+                    <i class="bi bi-bell "></i>
+                </div>
             </div>
         </div>
-        <div class="event-links">
 
 
 
-            <div class="event-icons">
-                <i class="bi bi-star"></i>
-                <i class="bi bi-bell "></i>
-            </div>
-        </div>
-</div>
-
-
-    
 
     }
 </div>

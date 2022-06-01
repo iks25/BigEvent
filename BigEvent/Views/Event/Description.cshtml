@@ -1,7 +1,7 @@
 ﻿@using BigEvent.ViewModel
 @model EventDescriptionVM
 @section StyleCss {
-    <link rel="stylesheet" href="~/css/eventDescription.css" />
+<link rel="stylesheet" href="~/css/eventDescription.css" />
 }
 <div class="row">
     <div class="col-lg-8">
@@ -12,7 +12,7 @@
                 </h1>
             </div>
             <div class="text-center">
-                <img class="image-event"  src="@Model.ImageSrc" alt="Alternate Text" />
+                <img class="image-event" src="@Model.ImageSrc" alt="Alternate Text" />
             </div>
             <div class="li"><hr /></div>
             <div>
@@ -40,18 +40,49 @@
             <div><i class="bi bi-clock"></i></div>
             <div class="event-detail-text mb-2">@Model.DateTime.ToString("HH:mm")</div>
 
+            <div>
+                <i class="bi bi-cash-coin"></i>
+            </div>
+            <div class="event-detail-text mb-2">
+                @if (Model.TicketPrice>0)
+                {
+                    <span>£</span> @Model.TicketPrice;
+            }
+            else
+            {
+
+                <span>free</span>
+            }
+                
+            
+            
+            </div>
+            
             <div><i class="bi bi-shop"></i></div>
             <div class="event-detail-text">@Model.Address</div>
         </div>
 
         <div class="event-description-actions mt-3">
-            <button> 
-            <i class="bi bi-bell"></i>
-            Attend</button>
+            <button>
+                <i class="bi bi-bell"></i>
+                Attend
+            </button>
             <button>f</button>
+
+        </div>
+        <hr />
+        <div class="event-description-actions mt-3">
+            <a asp-controller="EventsList" asp-action="index">
+
+                <button class="back-to-list-btn">
+                    <i class="bi bi-arrow-return-left"></i>
+
+                    Events List
+                </button>
+            </a>
         </div>
 
 
 
-        </div>
     </div>
+</div>

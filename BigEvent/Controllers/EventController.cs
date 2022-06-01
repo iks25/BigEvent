@@ -70,9 +70,7 @@ namespace BigEvent.Controllers
         [Authorize]
         public IActionResult Create(EventViewModel eventVM)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId    
-
-            var organize = _dbContext.Organizers.Single(user => user.ApplicationDbContextId == userId);
+            Organizer organize = OrganizerHelper.GetCurrnetOrganizer(User, _dbContext);
 
             var newEvent = new Event()
             {
@@ -88,5 +86,13 @@ namespace BigEvent.Controllers
             _dbContext.SaveChanges();
             return Content("done");
         }
+
+        //private Organizer GetCurrnetOrganizer()
+        //{
+        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId    
+
+        //    var organize = _dbContext.Organizers.Single(user => user.ApplicationDbContextId == userId);
+        //    return organize;
+        //}
     }
 }

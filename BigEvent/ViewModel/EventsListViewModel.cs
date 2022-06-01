@@ -14,6 +14,7 @@ namespace BigEvent.ViewModel
         public String Type { get; set; }
         public string ImgScr { get; set; }
         public string ImgName { get; set; }
+        public float Price { get; set; }
 
         public EventsListViewModel(Event eventEntity)
         {
@@ -25,6 +26,7 @@ namespace BigEvent.ViewModel
             Type = eventEntity.Type.Name;
             ImgScr = eventEntity.Image.Src;
             ImgName = eventEntity.Image.Name;
+            Price = eventEntity.TicketPrice;
 
 
         }

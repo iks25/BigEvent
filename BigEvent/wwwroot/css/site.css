@@ -101,11 +101,11 @@ body {
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
 }
-
-
+.non-decoration{
+    text-decoration:none !important;
+}
 
 /*-------------------- bootstrap override ------------------------*/
-
 .navbar-brand {
     font-family: Jokerman;
     font-size: 30px;
