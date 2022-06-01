@@ -23,7 +23,7 @@
     <div class="col-12">
 
 
-        <form asp-action="Create" method="post">
+        <form asp-action="Edit" method="post">
             <div class="row">
                 <div class="col-md-4">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -125,17 +125,21 @@
                 </div>
 
             </div>
+            <input asp-for="CopiedId" class="form-control" style="display:none" />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Edit" class="btn btn-primary" />
+
             </div>
 
         </form>
     </div>
+    <div>
+        <a class="pt-5 ml-2" asp-controller="EventsList" asp-action="My">Back to List</a>
+
+    </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 @{
     var galleryVM = new GalleryPartialViewModel()
             {

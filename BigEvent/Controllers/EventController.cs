@@ -126,6 +126,41 @@ namespace BigEvent.Controllers
             _dbContext.SaveChanges();
             return Content("done");
         }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Edit(EventViewModel eventVM)
+        {
+            Organizer organize = OrganizerHelper.GetCurrnetOrganizer(User, _dbContext);
+            var @event = _dbContext.Events.SingleOrDefault(e => e.Id == eventVM.CopiedId);
+
+            if (organize == null || @event == null
+                || @event.OrganizerId != organize.OrganizerId)
+            {
+                var message = "you can not edit this Event";
+                return RedirectToAction(
+                    "ExpectedError",
+                    "Home",
+                    new { message = message });
+
+            }
+
+            @event.Name = eventVM.Name;
+            @event.EventTypeId = eventVM.EventType;
+            @event.DateTime = eventVM.DateTime;
+            @event.Address = eventVM.Address;
+            @event.ImageId = eventVM.ChosenImageId;
+            @event.TicketPrice = eventVM.TicketPrice;
+            @event.Description = eventVM.Description;
+
+
+
+            _dbContext.SaveChanges();
+
+            return RedirectToAction("DescriptionForOwner", new { id = eventVM.CopiedId });
+        }
+
+
         [Authorize]
         public IActionResult Delete(int id)
         {
