@@ -92,8 +92,12 @@
 
 
                 <div class="event-icons">
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-bell "></i>
+                    <a asp-controller="Event"
+                   asp-action="Edit"
+                   asp-route-id=@_event.Id>edit</a>
+                    <a asp-controller="Event"
+                   asp-action="delete"
+                   asp-route-id=@_event.Id>delete</a>
                 </div>
             </div>
         </div>

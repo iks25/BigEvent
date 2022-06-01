@@ -31,5 +31,7 @@ namespace BigEvent.ViewModel
         public List<Image> ImagesInGallery { get; set; }
 
         public int ChosenImageId { get; set; }
+
+        public string Description { get; set; }
     }
 }

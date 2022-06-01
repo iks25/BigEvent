@@ -79,20 +79,64 @@ namespace BigEvent.Controllers
                 DateTime = DateTime.Parse($"{eventVM.Date} {eventVM.Time}"),
                 Address = eventVM.Address,
                 Organizer = organize,
-                ImageId = eventVM.ChosenImageId
+                ImageId = eventVM.ChosenImageId,
+                TicketPrice = eventVM.TicketPrice,
+                Description = eventVM.Description,
+
             };
 
             _dbContext.Events.Add(newEvent);
             _dbContext.SaveChanges();
             return Content("done");
         }
+        [Authorize]
+        public IActionResult Delete(int id)
+        {
+            //TODO ADD DELETE
+            return Content("delete " + id);
+        }
 
-        //private Organizer GetCurrnetOrganizer()
-        //{
-        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId    
+        [Authorize]
+        public IActionResult Edit(int id)
+        {
 
-        //    var organize = _dbContext.Organizers.Single(user => user.ApplicationDbContextId == userId);
-        //    return organize;
-        //}
+
+            var currentEvent = _dbContext.Events
+                .Include(e => e.Organizer)
+                .Include(e => e.Image)
+                .Include(e => e.Type)
+                .FirstOrDefault(e => e.Id == id);
+
+            if (currentEvent == null)
+            {
+                var message = "event with that id does not exist";
+                return RedirectToAction(
+                    "ExpectedError",
+                    "Home",
+                    new { message = message });
+
+            }
+
+            var currentOrganizerId =
+                OrganizerHelper
+                .GetCurrnetOrganizer(User, _dbContext)
+                .OrganizerId;
+
+            if (currentEvent.OrganizerId != currentOrganizerId)
+            {
+                var message = "you can not edit Event what is not your";
+                return RedirectToAction(
+                    "ExpectedError",
+                    "Home",
+                    new { message = message });
+            }
+
+
+
+            //TODO ADD EDIT
+            //todo my event retun to my list
+
+            return Content("Edit " + id);
+        }
     }
 }

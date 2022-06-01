@@ -2,6 +2,14 @@
 @model BigEvent.ViewModel.EventViewModel
 @section StyleCssPartial{
 <link rel="stylesheet" href="~/css/gallery.css" />
+
+<style>
+    .label-image {
+        display: flex;
+        flex-direction: column;
+        align-self: end;
+    }
+</style>
 }
 
 @{
@@ -12,76 +20,117 @@
 
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-12">
 
 
         <form asp-action="Create" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Time" class="control-label"></label>
-                <input asp-for="Time" class="form-control" />
-                <span asp-validation-for="Time" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
-            </div>
-
-            <label class="control-label cursor-pointer"
-                   onclick="showGalleryPicker()">Picture</label>
-            <div class="input-group">
-
-                <label id="chosenImage"
-                       type="text" class="form-control"
-                       style="cursor:pointer"
-                       onclick="showGalleryPicker()"
-                       aria-label="choose img">
-                    @Model.ImagesInGallery[0].Name
-                </label>
-                <input id="chosenImageInput"
-                       asp-for="ChosenImageId"
-                       value="@Model.ImagesInGallery[0].ImageId"
-                       style="display:none" />
-                <div class="input-group-prepend">
-                    <div class="input-group-text"
-                         onclick="showGalleryPicker()" style="cursor:pointer">
-
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
-                            <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
-                            <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z" />
-                        </svg>
+            <div class="row">
+                <div class="col-md-4">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
+
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Time" class="control-label"></label>
+                        <input asp-for="Time" class="form-control" />
+                        <span asp-validation-for="Time" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Date" class="control-label"></label>
+                        <input asp-for="Date" class="form-control" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TicketPrice" class="control-label"></label>
+                        <input asp-for="TicketPrice" class="form-control" value=0 />
+                        <span asp-validation-for="TicketPrice" class="text-danger"></span>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-4">
+                            <img id="chosenImageIMG"
+                                 src=@Model.ImagesInGallery[0].Src
+                                 alt="picture"
+                                 style="max-width:100%; max-height:95px;
+                                        border-radius:5px;
+                                        cursor:pointer"
+                                 onclick="showGalleryPicker()" />
+                        </div>
+
+                        <div class="col-8  label-image">
+                            <label class="control-label cursor-pointer"
+                                   onclick="showGalleryPicker()">Picture</label>
+                            <div class="input-group">
+
+                                <label id="chosenImage"
+                                       type="text" class="form-control"
+                                       style="cursor:pointer"
+                                       onclick="showGalleryPicker()"
+                                       aria-label="choose img">
+                                    @Model.ImagesInGallery[0].Name
+                                </label>
+                                <input id="chosenImageInput"
+                                       asp-for="ChosenImageId"
+                                       value="@Model.ImagesInGallery[0].ImageId"
+                                       style="display:none" />
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"
+                                         onclick="showGalleryPicker()" style="cursor:pointer">
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
+                                            <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                                            <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z" />
+                                        </svg>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label asp-for="EventType" class="control-label">Event Type</label>
+                        <select class="form-control" asp-for="EventType" asp-items="@Model.Types">
+                            <option></option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description"
+                                  class="form-control"
+                                  cols="" rows="7">
+                        </textarea>
+
+
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
                 </div>
 
             </div>
-
-            <div class="form-group mt-3">
-                <label asp-for="EventType" class="control-label">Event Type</label>
-                <select class="form-control" asp-for="EventType" asp-items="@Model.Types">
-                    <option></option>
-                </select>
-
-            </div>
-
-
-
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+
         </form>
     </div>
 </div>
