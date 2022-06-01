@@ -34,7 +34,8 @@ namespace BigEvent.ViewModel
         public List<Image> ImagesInGallery { get; set; }
 
         public int ChosenImageId { get; set; }
-
+        public string ChosenImageSrc { get; set; }
+        public string ChosenImageName { get; }
         public string Description { get; set; }
 
 
@@ -53,6 +54,8 @@ namespace BigEvent.ViewModel
             EventType = @event.EventTypeId;
             TicketPrice = @event.TicketPrice;
             ChosenImageId = @event.ImageId;
+            ChosenImageSrc = @event.Image.Src;
+            ChosenImageName = @event.Image.Name;
             Description = @event.Description;
 
 

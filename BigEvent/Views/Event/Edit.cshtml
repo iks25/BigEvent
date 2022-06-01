@@ -68,7 +68,7 @@
                     <div class="row">
                         <div class="col-4">
                             <img id="chosenImageIMG"
-                                 src=@Model.ImagesInGallery[0].Src
+                                 src=@Model.ChosenImageSrc
                                  alt="picture"
                                  style="max-width:100%; max-height:95px;
                                         border-radius:5px;
@@ -86,7 +86,7 @@
                                        style="cursor:pointer"
                                        onclick="showGalleryPicker()"
                                        aria-label="choose img">
-                                    @Model.ImagesInGallery[0].Name
+                                    @Model.ChosenImageName
                                 </label>
                                 <input id="chosenImageInput"
                                        asp-for="ChosenImageId"
@@ -140,7 +140,7 @@
     var galleryVM = new GalleryPartialViewModel()
             {
                 Images = Model.ImagesInGallery,
-                ChosenPictureId = Model.ImagesInGallery[0].ImageId
+                ChosenPictureId = Model.ChosenImageId
             };
 }
 
