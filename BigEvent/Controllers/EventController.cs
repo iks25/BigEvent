@@ -26,19 +26,56 @@ namespace BigEvent.Controllers
         {
 
             var id2 = id + 3;
-            var currentEvent = _dbContext.Events
-                .Include(e => e.Organizer)
-                .Include(e => e.Image)
-                .Include(e => e.Type)
-                .SingleOrDefault(e => e.Id == id);
+            Event currentEvent = GetFullEvent(id);
 
             if (currentEvent == null)
-                return NotFound();
-            //TODO Redirect Message
+            {
+                var message = "event with that id does not exist";
+                return RedirectToAction(
+                    "ExpectedError",
+                    "Home",
+                    new { message = message });
+            }
+
 
             var eventVM = new EventDescriptionVM(currentEvent);
 
 
+            return View(eventVM);
+        }
+
+
+
+        [Authorize]
+        public IActionResult DescriptionForOwner(int id)
+        {
+            Event currentEvent = GetFullEvent(id);
+            if (currentEvent == null)
+            {
+                var message = "event with that id does not exist";
+                return RedirectToAction(
+                    "ExpectedError",
+                    "Home",
+                    new { message = message });
+
+            }
+
+            var currentOrganizerId =
+                OrganizerHelper
+                .GetCurrnetOrganizer(User, _dbContext)
+                .OrganizerId;
+
+            if (currentEvent.OrganizerId != currentOrganizerId)
+            {
+                var message = "you are not owner of that event";
+                return RedirectToAction(
+                    "ExpectedError",
+                    "Home",
+                    new { message = message });
+            }
+
+
+            var eventVM = new EventDescriptionVM(currentEvent);
             return View(eventVM);
         }
 
@@ -96,6 +133,10 @@ namespace BigEvent.Controllers
             return Content("delete " + id);
         }
 
+
+
+
+        [HttpGet]
         [Authorize]
         public IActionResult Edit(int id)
         {
@@ -136,7 +177,35 @@ namespace BigEvent.Controllers
             //TODO ADD EDIT
             //todo my event retun to my list
 
-            return Content("Edit " + id);
+
+
+            var listSelectedItems = new List<SelectListItem>();
+            _dbContext.EventTypes.ToList().ForEach(eventType =>
+            {
+                listSelectedItems
+                .Add(new SelectListItem()
+                {
+                    Value = eventType.Id + "",
+                    Text = eventType.Name
+                });
+
+            });
+            var images = _dbContext.Images.ToList<Image>();
+            var viewItem = new EventViewModel
+                (currentEvent, listSelectedItems, images);
+
+
+            return View(viewItem);
+
+        }
+
+        private Event GetFullEvent(int id)
+        {
+            return _dbContext.Events
+                .Include(e => e.Organizer)
+                .Include(e => e.Image)
+                .Include(e => e.Type)
+                .SingleOrDefault(e => e.Id == id);
         }
     }
 }

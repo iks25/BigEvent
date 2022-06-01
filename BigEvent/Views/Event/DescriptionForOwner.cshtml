@@ -64,21 +64,28 @@
         </div>
 
         <div class="event-description-actions mt-3">
-            <button class="event-action-btn">
-                <i class="bi bi-bell"></i>
-                Attend
+
+            <a class="event-action-btn"
+               asp-action="Edit" asp-controller="Event" asp-route-id=@Model.Id>
+                <i class="bi bi-pencil-square"></i>
+                edit
+            </a>
+
+            <button class="event-action-btn delete">
+                <i class="bi bi-trash"></i> delete
             </button>
-            <button class="event-action-btn  event-action-btn">f</button>
+
+
 
         </div>
         <hr />
         <div class="event-description-actions mt-3">
-            <a asp-controller="EventsList" asp-action="index">
+            <a asp-controller="EventsList" asp-action="My">
 
-                <button class="back-to-list-btn event-action-btn">
+                <button class="event-action-btn back-to-list-btn">
                     <i class="bi bi-arrow-return-left"></i>
 
-                    Events List
+                    My Events
                 </button>
             </a>
         </div>

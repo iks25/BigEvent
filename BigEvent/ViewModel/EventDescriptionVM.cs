@@ -21,6 +21,7 @@ namespace BigEvent.ViewModel
 
         public EventDescriptionVM(Event _event)
         {
+            Id = _event.Id;
             Name = _event.Name;
             Address = _event.Address;
             Description = _event.Description;

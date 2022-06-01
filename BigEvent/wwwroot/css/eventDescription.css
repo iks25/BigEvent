@@ -45,24 +45,62 @@
     grid-gap: 10px;
 }
 
-    .event-description-actions button {
+/*.event-description-actions a {
         border: none;
         -moz-box-shadow: 1px 1px 3px gray;
         -webkit-box-shadow: 1px 1px 3px gray;
         box-shadow: 1px 1px 3px gray;
-        background-color: white;
-        /*border-radius: 20px;*/
-        border-radius: 10px;
+        background-color: white;*/
+/*border-radius: 20px;*/
+/*border-radius: 10px;
         height: 50px;
         font-size: 1.2em;
         font-weight: 600;
+        text-align: center;
+        padding-top: 10px;
     }
 
-        .event-description-actions button:hover {
+        .event-description-actions a:hover {
             -moz-box-shadow: -1px -1px 3px gray;
             -webkit-box-shadow: -1px -1px 3px gray;
             box-shadow: -1px -1px 3px gray;
-        }
+        }*/
+
+
+.event-action-btn {
+    display: block;
+    border: none;
+    -moz-box-shadow: 1px 1px 3px gray;
+    -webkit-box-shadow: 1px 1px 3px gray;
+    box-shadow: 1px 1px 3px gray;
+    background-color: white;
+    /*border-radius: 20px;*/
+    border-radius: 10px;
+    height: 50px;
+    font-size: 1.2em;
+    font-weight: 600;
+    text-align: center;
+}
+
+a.event-action-btn {
+    padding-top: 10px;
+    text-decoration: none;
+}
+
+.event-action-btn:hover {
+    -moz-box-shadow: -1px -1px 3px gray;
+    -webkit-box-shadow: -1px -1px 3px gray;
+    box-shadow: -1px -1px 3px gray;
+    -webkit-text-decoration: underline;
+    text-decoration: underline;
+}
+
+.event-action-btn.delete {
+    color: #B30404;
+}
+
+    .event-action-btn.delete:hover {
+    }
 
 .back-to-list-btn {
     font-size: 1.1em !important;

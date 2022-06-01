@@ -49,7 +49,7 @@
         }
 
         <div class="eventContainer">
-            <a class="non-decoration" asp-controller="Event" asp-action="Description" asp-route-id="@_event.Id">
+            <a class="non-decoration" asp-controller="Event" asp-action="DescriptionForOwner" asp-route-id="@_event.Id">
 
                 <div class="event-img">
                     <img src=@_event.ImgScr alt=@_event.ImgName />
@@ -59,7 +59,7 @@
                 <div class="event-data">
                     @_event.DateTime.ToString("MM/dd/yyyy HH:mm")
                 </div>
-                <a class="non-decoration" asp-controller="Event" asp-action="Description" asp-route-id="@_event.Id">
+                <a class="non-decoration" asp-controller="Event" asp-action="DescriptionForOwner" asp-route-id="@_event.Id">
 
                     <div class="event-name">
                         @_event.Name

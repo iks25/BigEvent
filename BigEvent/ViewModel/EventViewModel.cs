@@ -8,6 +8,8 @@ namespace BigEvent.ViewModel
 {
     public class EventViewModel
     {
+        public int CopiedId { get; set; }
+
         [StringLength(150)]
         [Required]
         public string Name { get; set; }
@@ -21,6 +23,7 @@ namespace BigEvent.ViewModel
         [Required]
         [DataType(DataType.Time)]
         public string Time { get; set; }
+        public DateTime DateTime { get; set; }
 
         [Required]
         public string Address { get; set; }
@@ -33,5 +36,30 @@ namespace BigEvent.ViewModel
         public int ChosenImageId { get; set; }
 
         public string Description { get; set; }
+
+
+        public EventViewModel()
+        {
+
+        }
+        public EventViewModel(Event @event, List<SelectListItem> eventsTypes, List<Image> images)
+        {
+            CopiedId = @event.Id;
+            Name = @event.Name;
+            Time = @event.DateTime.ToString("HH:mm");
+            Date = @event.DateTime.Date.ToString();
+            DateTime = @event.DateTime;
+            Address = @event.Address;
+            EventType = @event.EventTypeId;
+            TicketPrice = @event.TicketPrice;
+            ChosenImageId = @event.ImageId;
+            Description = @event.Description;
+
+
+            ImagesInGallery = images;
+            Types = eventsTypes;
+
+
+        }
     }
 }
