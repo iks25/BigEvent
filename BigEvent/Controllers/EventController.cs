@@ -162,10 +162,20 @@ namespace BigEvent.Controllers
 
 
         [Authorize]
+        [HttpDelete]
         public IActionResult Delete(int id)
         {
-            //TODO ADD DELETE
-            return Content("delete " + id);
+            var organizeID = OrganizerHelper.GetCurrnetOrganizer(User, _dbContext).OrganizerId;
+            var @event = _dbContext.Events
+                .SingleOrDefault
+                (e => e.Id == id && e.OrganizerId == organizeID);
+            if (@event == null)
+            {
+                return BadRequest(new { meesage = "you ca not delete this Event" });
+            }
+            _dbContext.Events.Remove(@event);
+            _dbContext.SaveChanges();
+            return Ok();
         }
 
 

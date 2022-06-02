@@ -101,6 +101,19 @@ hr {
     font-weight: 600;
 }
 
+.edit-link {
+}
+
+.delete-link {
+    color: #6159C3;
+    cursor: pointer;
+}
+
+    .delete-link:hover {
+        color: red;
+        -webkit-text-decoration: underline;
+        text-decoration: underline;
+    }
 
 @media (max-width: 769px) {
     .event-img img {
