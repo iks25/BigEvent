@@ -1,7 +1,7 @@
 ﻿@page
-@model RegisterModel
+@model BigEvent.Areas.Identity.Pages.Account.Register.AppUserModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "AppUser Register ";
 }
 @section styleCss{
 <link rel="stylesheet" href="~/css/register.css" />
@@ -15,12 +15,11 @@
 
 
         <ul class="nav nav-tabs">
-            <li class="nav-item col-6 text-center ">
-                <a class="nav-link " href="/Identity/Account/Register/AppUser"
-                   >User</a>
-            </li>
             <li class="nav-item col-6 text-center font-weight-bold">
-                <a class="nav-link active" href="#">Organizer</a>
+                <a class="nav-link active" href="#">User</a>
+            </li>
+            <li class="nav-item col-6 text-center">
+                <a class="nav-link " href="/Identity/Account/Register">Organizer</a>
             </li>
 
         </ul>
@@ -39,6 +38,11 @@
                 <label asp-for="Input.Name"></label>
                 <input asp-for="Input.Name" class="form-control" />
                 <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Surname"></label>
+                <input asp-for="Input.Surname" class="form-control" />
+                <span asp-validation-for="Input.Surname" class="text-danger"></span>
             </div>
 
             <div class="form-group">

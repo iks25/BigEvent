@@ -4,14 +4,16 @@ using BigEvent.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BigEvent.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220603233647_BasicUsersAdd")]
+    partial class BasicUsersAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,7 +113,7 @@ namespace BigEvent.Migrations
 
                     b.HasKey("BasicUserId");
 
-                    b.ToTable("BasicUsers");
+                    b.ToTable("AppUsers");
                 });
 
             modelBuilder.Entity("BigEvent.Models.Event", b =>

@@ -1,4 +1,21 @@
-﻿<!DOCTYPE html>
+﻿@using BigEvent.Data
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    bool isBasicUser=false;
+    bool isUserSignedIn = SignInManager.IsSignedIn(User);
+    bool isOrganizer=false;
+
+    if (isUserSignedIn)
+    {
+        isBasicUser = UserManager.GetUserAsync(User)
+            .Result.Type == UserType.BasicUser;
+        isOrganizer = !isBasicUser;
+    }
+    }
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,7 +23,7 @@
     <title>@ViewData["Title"] - BigEvent</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" />
-    
+
     <link rel="stylesheet" href="~/css/site.css" />
 
     @await RenderSectionAsync("StyleCss", required: false)
@@ -38,6 +55,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        @if (isUserSignedIn && isBasicUser)
+                        {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="EventsList" asp-action="My">My Events</a>
+                    </li>
+                        }
+
+
 
                     </ul>
                     <partial name="_LoginPartial" />

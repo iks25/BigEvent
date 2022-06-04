@@ -124,7 +124,8 @@ namespace BigEvent.Controllers
 
             _dbContext.Events.Add(newEvent);
             _dbContext.SaveChanges();
-            return Content("done");
+
+            return RedirectToAction("My", "EventsList");
         }
 
         [HttpPost]

@@ -7,6 +7,8 @@ namespace BigEvent.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Event> Events { get; set; }
+        public DbSet<BasicUser> BasicUsers { get; set; }
+
         public DbSet<EventType> EventTypes { get; set; }
 
         public DbSet<Organizer> Organizers { get; set; }
