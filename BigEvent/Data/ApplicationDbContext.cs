@@ -14,6 +14,7 @@ namespace BigEvent.Data
         public DbSet<Organizer> Organizers { get; set; }
 
         public DbSet<Image> Images { get; set; }
+        public DbSet<Attendance> Attendance { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
        : base(options)
         {

@@ -45,22 +45,39 @@
                         </li>
 
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="EventsList" asp-action="My">My Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="Create">Create</a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
+                        @*  <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </li>*@
+
+
                         @if (isUserSignedIn && isBasicUser)
                         {
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="EventsList" asp-action="My">My Events</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="EventsList" asp-action="index">events</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="EventsList" asp-action="index">calendar</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="EventsList" asp-action="index">saved</a>
+                            </li>
                         }
+                        @if (isUserSignedIn && isOrganizer)
+                        {
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="EventsList" asp-action="My">My Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="Create">Create</a>
+                            </li>
+
+                        }
+
 
 
 

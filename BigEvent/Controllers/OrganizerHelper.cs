@@ -16,5 +16,7 @@ namespace BigEvent.Controllers
             var organize = dbContext.Organizers.Single(user => user.ApplicationDbContextId == userId);
             return organize;
         }
+
+      
     }
 }
