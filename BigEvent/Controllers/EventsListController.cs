@@ -1,6 +1,7 @@
 ﻿using BigEvent.Data;
 using BigEvent.ViewModel;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -11,11 +12,13 @@ namespace BigEvent.Controllers
     public class EventsListController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
+        private readonly UserIdentityHelper _userIdentityHelper;
 
         public EventsListController(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
+
         public IActionResult Index()
         {
             var eventList = new List<EventsListViewModel>();

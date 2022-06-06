@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BigEvent.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220606120000_addEventInCalendar")]
-    partial class addEventInCalendar
+    [Migration("20220606184904_changingEventInCalendarTime")]
+    partial class changingEventInCalendarTime
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -190,9 +190,6 @@ namespace BigEvent.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EventDate")
-                        .HasColumnType("int");
-
                     b.Property<int>("EventId")
                         .HasColumnType("int");
 
@@ -205,7 +202,7 @@ namespace BigEvent.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("EventInCalendar");
+                    b.ToTable("EventsInCalendar");
                 });
 
             modelBuilder.Entity("BigEvent.Models.EventType", b =>

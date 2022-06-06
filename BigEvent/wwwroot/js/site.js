@@ -44,7 +44,7 @@ function showGalleryPicker() {
 
 ///////////////////notify
 
-function addEventToCalendar(iconSpan) {
+function addEventToCalendar(iconSpan, id) {
     let isInCallendar = iconSpan.getAttribute("data-isInCallendar");
 
 
@@ -52,9 +52,23 @@ function addEventToCalendar(iconSpan) {
 
         iconSpan.classList.remove("bi-bell");
         iconSpan.classList.add("bi-bell-fill");
+
+        console.log("add--------------->");
+        $.ajax({
+            type: "POST",
+            url: "api/Calendar/addEvent/" + id,
+            success: () => {
+                console.log("ok sucess");
+            },
+            error: (result) => {
+                console.log(result);
+            }
+
+        })
     } else {
         iconSpan.classList.remove("bi-bell-fill");
         iconSpan.classList.add("bi-bell");
+
     }
     isInCallendar = (isInCallendar == "yes") ? "no" : "yes";
 

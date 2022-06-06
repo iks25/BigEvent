@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BigEvent.Models
@@ -16,7 +17,5 @@ namespace BigEvent.Models
         [Required]
         public int EventId { get; set; }
 
-        [Required]
-        public DataType EventDate { get; set; }
     }
 }

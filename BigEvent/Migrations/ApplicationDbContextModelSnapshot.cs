@@ -188,9 +188,6 @@ namespace BigEvent.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EventDate")
-                        .HasColumnType("int");
-
                     b.Property<int>("EventId")
                         .HasColumnType("int");
 
@@ -203,7 +200,7 @@ namespace BigEvent.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("EventInCalendar");
+                    b.ToTable("EventsInCalendar");
                 });
 
             modelBuilder.Entity("BigEvent.Models.EventType", b =>
