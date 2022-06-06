@@ -48,7 +48,7 @@ function addEventToCalendar(iconSpan, id) {
     let isInCallendar = iconSpan.getAttribute("data-isInCallendar");
 
 
-    if (isInCallendar == "yes") {
+    if (isInCallendar == "no") {
 
         iconSpan.classList.remove("bi-bell");
         iconSpan.classList.add("bi-bell-fill");
@@ -66,6 +66,9 @@ function addEventToCalendar(iconSpan, id) {
 
         })
     } else {
+
+        //todo delete
+        console.log("delete");
         iconSpan.classList.remove("bi-bell-fill");
         iconSpan.classList.add("bi-bell");
 

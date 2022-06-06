@@ -12,10 +12,14 @@ namespace BigEvent.Controllers
     public class EventsListController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly UserIdentityHelper _userIdentityHelper;
 
-        public EventsListController(ApplicationDbContext dbContext)
+        private UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        public EventsListController(ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
+            _userManager = userManager;
+            _signInManager = signInManager;
             _dbContext = dbContext;
         }
 
@@ -26,10 +30,38 @@ namespace BigEvent.Controllers
             var eventListFromDb =
                 _dbContext.Events.Include(e => e.Organizer).Include(e => e.Image).Include(e => e.Type);
 
+
+
             foreach (var item in eventListFromDb)
             {
                 eventList.Add(new EventsListViewModel(item));
             }
+
+
+            if (_signInManager.IsSignedIn(User))
+            {
+                var indetityHelper = new UserIdentityHelper(_dbContext, _userManager, User);
+
+                if (indetityHelper.isBasicUser())
+                {
+                    var userId = indetityHelper.BasicUserId;
+                    foreach (var item in eventList)
+                    {
+                        var eventinCalendar = _dbContext
+                            .EventsInCalendar
+                            .SingleOrDefault
+                            (i => i.UserId == userId && i.EventId == item.Id);
+                        if (eventinCalendar != null)
+                        {
+                            item.IsInCalendar = true;
+                        }
+
+                    }
+                }
+
+
+            }
+
 
             return View(eventList);
         }
@@ -51,6 +83,9 @@ namespace BigEvent.Controllers
             {
                 eventList.Add(new EventsListViewModel(item));
             }
+
+
+
 
             return View(eventList);
         }

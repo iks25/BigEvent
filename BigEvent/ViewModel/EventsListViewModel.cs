@@ -16,6 +16,8 @@ namespace BigEvent.ViewModel
         public string ImgName { get; set; }
         public float Price { get; set; }
 
+        public bool IsInCalendar { get; set; }
+
         public EventsListViewModel(Event eventEntity)
         {
             Id = eventEntity.Id;
@@ -27,6 +29,8 @@ namespace BigEvent.ViewModel
             ImgScr = eventEntity.Image.Src;
             ImgName = eventEntity.Image.Name;
             Price = eventEntity.TicketPrice;
+
+
 
 
         }
