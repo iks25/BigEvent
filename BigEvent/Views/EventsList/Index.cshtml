@@ -1,7 +1,23 @@
-﻿@using BigEvent.ViewModel
+﻿@using BigEvent.Data
+@using BigEvent.ViewModel
+@using Microsoft.AspNetCore.Identity
 @model List<EventsListViewModel>
 @section StyleCss{
 <link rel="stylesheet" href="~/css/eventsList.css" />
+}
+
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    bool isBasicUser=false;
+    bool isUserSignedIn = SignInManager.IsSignedIn(User);
+
+    if (isUserSignedIn)
+    {
+        isBasicUser = UserManager.GetUserAsync(User)
+            .Result.Type == UserType.BasicUser;
+    }
 }
 
 <h2>Events List</h2>
@@ -79,11 +95,17 @@
         <div class="event-links">
 
 
-
-            <div class="event-icons">
+            @if (isUserSignedIn&&isBasicUser)
+                {
+                    
+                    <div class="event-icons">
+                        <i class="bi bi-bell " data-isInCallendar="yes"  onclick="addEventToCalendar(this)"></i>
+                    </div>
+            }
+            @*<div class="event-icons">
                 <i class="bi bi-star"></i>
                 <i class="bi bi-bell "></i>
-            </div>
+            </div>*@
         </div>
 </div>
 

@@ -41,6 +41,29 @@ function showGalleryPicker() {
 
 ///////////////////////////////////////////////// Gallery
 
+
+///////////////////notify
+
+function addEventToCalendar(iconSpan) {
+    let isInCallendar = iconSpan.getAttribute("data-isInCallendar");
+
+
+    if (isInCallendar == "yes") {
+
+        iconSpan.classList.remove("bi-bell");
+        iconSpan.classList.add("bi-bell-fill");
+    } else {
+        iconSpan.classList.remove("bi-bell-fill");
+        iconSpan.classList.add("bi-bell");
+    }
+    isInCallendar = (isInCallendar == "yes") ? "no" : "yes";
+
+
+    iconSpan.setAttribute("data-isInCallendar", isInCallendar);
+
+}
+///////////////////notify
+
 $(document).ready(() => {
 
 

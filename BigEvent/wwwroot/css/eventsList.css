@@ -115,6 +115,10 @@ hr {
         text-decoration: underline;
     }
 
+.bi-bell-fill {
+    color: black !important;
+}
+
 @media (max-width: 769px) {
     .event-img img {
         width: 120px;
