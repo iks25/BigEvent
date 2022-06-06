@@ -23,5 +23,7 @@ namespace BigEvent.Models
 
         [Required]
         public string ApplicationDbContextId { get; set; }
+
+        public List<EventInCalendar> EventsInCalendar { get; set; }
     }
 }
