@@ -75,8 +75,27 @@ namespace BigEvent.API
         [Route("DeleteEvent/{eventId}")]
         public IActionResult DeleteEvent(int eventId)
         {
-            //TODo handle add attend
-            return Content("delete -> " + eventId);
+            var userIdentityHelper =
+                new UserIdentityHelper(_dbContext, _userManager, User);
+
+
+            if (!userIdentityHelper.isBasicUser())
+            {
+                var message = "Only Basic User Can Use that action";
+                return RedirectToAction(
+                    "ExpectedError",
+                    "Home",
+                    new { message = message });
+            }
+            var userId = userIdentityHelper.BasicUserId;
+            var eventInCalendar =
+                _dbContext.EventsInCalendar
+                .SingleOrDefault
+                (e => e.EventId == eventId && e.UserId == userId);
+            _dbContext.EventsInCalendar.Remove(eventInCalendar);
+            _dbContext.SaveChanges(true);
+
+            return Ok();
         }
 
     }

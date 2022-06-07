@@ -67,6 +67,19 @@ function addEventToCalendar(iconSpan, id) {
         })
     } else {
 
+
+        $.ajax({
+            type: "DELETE",
+            url: "api/Calendar/DeleteEvent/" + id,
+            success: () => {
+                console.log("Delete OK");
+            },
+            error: (result) => {
+                console.log("error", result);
+            }
+
+        });
+
         //todo delete
         console.log("delete");
         iconSpan.classList.remove("bi-bell-fill");
