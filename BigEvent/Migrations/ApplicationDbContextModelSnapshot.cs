@@ -241,6 +241,29 @@ namespace BigEvent.Migrations
                     b.ToTable("Images");
                 });
 
+            modelBuilder.Entity("BigEvent.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrganizerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizerId");
+
+                    b.ToTable("Messages");
+                });
+
             modelBuilder.Entity("BigEvent.Models.Organizer", b =>
                 {
                     b.Property<int>("OrganizerId")
@@ -269,6 +292,28 @@ namespace BigEvent.Migrations
                     b.HasKey("OrganizerId");
 
                     b.ToTable("Organizers");
+                });
+
+            modelBuilder.Entity("BigEvent.Models.UserMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BasicUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MessageId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BasicUserId");
+
+                    b.HasIndex("MessageId");
+
+                    b.ToTable("UserMessages");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -469,6 +514,34 @@ namespace BigEvent.Migrations
                     b.Navigation("Event");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BigEvent.Models.Message", b =>
+                {
+                    b.HasOne("BigEvent.Models.Organizer", "Organizer")
+                        .WithMany()
+                        .HasForeignKey("OrganizerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Organizer");
+                });
+
+            modelBuilder.Entity("BigEvent.Models.UserMessage", b =>
+                {
+                    b.HasOne("BigEvent.Models.BasicUser", "BasicUser")
+                        .WithMany()
+                        .HasForeignKey("BasicUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BigEvent.Models.Message", "Message")
+                        .WithMany()
+                        .HasForeignKey("MessageId");
+
+                    b.Navigation("BasicUser");
+
+                    b.Navigation("Message");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

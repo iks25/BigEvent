@@ -92,6 +92,25 @@ function addEventToCalendar(iconSpan, id) {
     iconSpan.setAttribute("data-isInCallendar", isInCallendar);
 
 }
+
+
+//////////////////////////////////////Message has been Read///
+/**
+ * 
+ * @param view HTMLDivElement
+ * @param userMessageId
+ */
+function selectMessageAsRead(view,userMessageId) {
+
+    $(view)
+        .fadeOut("fast", ()=>{
+            
+            //Todo handle delete Message
+            });
+    
+
+}
+//////////////////////////////////////Message has been Read///
 ///////////////////notify
 
 $(document).ready(() => {

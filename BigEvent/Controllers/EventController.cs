@@ -253,5 +253,7 @@ namespace BigEvent.Controllers
                 .Include(e => e.Type)
                 .SingleOrDefault(e => e.Id == id);
         }
+
+      
     }
 }

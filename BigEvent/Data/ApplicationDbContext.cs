@@ -17,6 +17,9 @@ namespace BigEvent.Data
         public DbSet<Attendance> Attendance { get; set; }
 
         public DbSet<EventInCalendar> EventsInCalendar { get; set; }
+
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<UserMessage> UserMessages { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
        : base(options)
         {

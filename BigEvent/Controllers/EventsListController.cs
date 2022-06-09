@@ -1,11 +1,11 @@
-﻿using BigEvent.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
+using BigEvent.Data;
 using BigEvent.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BigEvent.Controllers
 {
@@ -13,7 +13,7 @@ namespace BigEvent.Controllers
     {
         private readonly ApplicationDbContext _dbContext;
 
-        private UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
         public EventsListController(ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
@@ -40,11 +40,11 @@ namespace BigEvent.Controllers
 
             if (_signInManager.IsSignedIn(User))
             {
-                var indetityHelper = new UserIdentityHelper(_dbContext, _userManager, User);
+                var identityHelper = new UserIdentityHelper(_dbContext, _userManager, User);
 
-                if (indetityHelper.isBasicUser())
+                if (identityHelper.isBasicUser())
                 {
-                    var userId = indetityHelper.BasicUserId;
+                    var userId = identityHelper.BasicUserId;
                     foreach (var item in eventList)
                     {
                         var eventinCalendar = _dbContext
