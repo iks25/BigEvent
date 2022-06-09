@@ -251,6 +251,9 @@ namespace BigEvent.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -258,6 +261,8 @@ namespace BigEvent.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EventId");
 
                     b.HasIndex("OrganizerId");
 
@@ -304,7 +309,10 @@ namespace BigEvent.Migrations
                     b.Property<int>("BasicUserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MessageId")
+                    b.Property<bool>("HasBeenRead")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("MessageId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -518,11 +526,19 @@ namespace BigEvent.Migrations
 
             modelBuilder.Entity("BigEvent.Models.Message", b =>
                 {
+                    b.HasOne("BigEvent.Models.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("BigEvent.Models.Organizer", "Organizer")
                         .WithMany()
                         .HasForeignKey("OrganizerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Event");
 
                     b.Navigation("Organizer");
                 });
@@ -537,7 +553,9 @@ namespace BigEvent.Migrations
 
                     b.HasOne("BigEvent.Models.Message", "Message")
                         .WithMany()
-                        .HasForeignKey("MessageId");
+                        .HasForeignKey("MessageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("BasicUser");
 

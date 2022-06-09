@@ -74,10 +74,10 @@ namespace BigEvent.Controllers
 
 
             var eventList = new List<EventsListViewModel>();
-
             var eventListFromDb =
                 _dbContext.Events.Include(e => e.Organizer).Include(e => e.Image).Include(e => e.Type)
                 .Where(e => e.OrganizerId == organizer.OrganizerId);
+
 
             foreach (var item in eventListFromDb)
             {

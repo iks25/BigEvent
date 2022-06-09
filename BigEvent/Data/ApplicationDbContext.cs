@@ -27,7 +27,17 @@ namespace BigEvent.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
+
+            //        builder.Entity<Message>()
+            //.HasOne(c => c.Organizer)
+            //.WithMany()
+            //.OnDelete(DeleteBehavior.SetNull);
+
+            builder.Entity<Message>().HasOne(x => x.Organizer).WithMany().HasForeignKey(x => x.OrganizerId).OnDelete(DeleteBehavior.Restrict);
+
             base.OnModelCreating(builder);
+
         }
     }
 }

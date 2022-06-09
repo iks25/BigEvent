@@ -105,10 +105,18 @@ function selectMessageAsRead(view,userMessageId) {
     $(view)
         .fadeOut("fast", ()=>{
             
-            //Todo handle delete Message
+            //Todo handle hasBeenRead
             });
     
 
+}
+
+function deleteMessage(view,userMessageId){
+    $(view)
+        .fadeOut("fast", ()=>{
+
+            //Todo handle delete Message
+        });
 }
 //////////////////////////////////////Message has been Read///
 ///////////////////notify
