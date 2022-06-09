@@ -110,7 +110,22 @@ body {
     height: 40px;
     text-align: center;
     border-radius:50%;
-  
+    position: relative;
+    margin-left: 3px;
+}
+.notification-nr
+{
+    top: 2px;
+    left: 20px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    border-radius: 50%;
+    display: block;
+    background-color: var(--color1);
+    color: white;
+    outline: 2px solid white;
 }
 .nav-icon-link:hover{
     background-color: #ffc79c;
