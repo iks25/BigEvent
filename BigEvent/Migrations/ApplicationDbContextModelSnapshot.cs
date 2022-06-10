@@ -260,6 +260,9 @@ namespace BigEvent.Migrations
                     b.Property<int>("OrganizerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EventId");

@@ -20,8 +20,6 @@ namespace BigEvent.Controllers
         {
             _dbContext = dbContext;
         }
-
-
         public IActionResult Description(int id)
         {
 
@@ -130,35 +128,54 @@ namespace BigEvent.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult Edit(EventViewModel eventVM)
+        public IActionResult Edit(EventViewModel eventVm)
         {
-            Organizer organize = OrganizerHelper.GetCurrnetOrganizer(User, _dbContext);
-            var @event = _dbContext.Events.SingleOrDefault(e => e.Id == eventVM.CopiedId);
+            Organizer organizer = OrganizerHelper.GetCurrnetOrganizer(User, _dbContext);
+            var @event = _dbContext.Events.SingleOrDefault(e => e.Id == eventVm.CopiedId);
 
-            if (organize == null || @event == null
-                || @event.OrganizerId != organize.OrganizerId)
+            if (organizer == null || @event == null
+                || @event.OrganizerId != organizer.OrganizerId)
             {
                 var message = "you can not edit this Event";
                 return RedirectToAction(
                     "ExpectedError",
                     "Home",
                     new { message = message });
-
             }
 
-            @event.Name = eventVM.Name;
-            @event.EventTypeId = eventVM.EventType;
-            @event.DateTime = eventVM.DateTime;
-            @event.Address = eventVM.Address;
-            @event.ImageId = eventVM.ChosenImageId;
-            @event.TicketPrice = eventVM.TicketPrice;
-            @event.Description = eventVM.Description;
+            @event.Name = eventVm.Name;
+            @event.EventTypeId = eventVm.EventType;
+            @event.DateTime = eventVm.DateTime;
+            @event.Address = eventVm.Address;
+            @event.ImageId = eventVm.ChosenImageId;
+            @event.TicketPrice = eventVm.TicketPrice;
+            @event.Description = eventVm.Description;
 
+            var messageFactory = new MessageFactory();
+            
+            var editMessage = messageFactory.CreateEditMessage(@event, organizer);
+            _dbContext.Messages.Add(editMessage);
+            
+            var followersId =
+                _dbContext.EventsInCalendar
+                .Where(e => e.EventId == @event.Id)
+                .Select(e=>e.UserId);
 
-
+            foreach (var item in followersId)
+            {
+                _dbContext.UserMessages
+                    .Add(
+                        new UserMessage()
+                        {
+                            Message = editMessage,
+                            BasicUserId = item,
+                            HasBeenRead = false
+                        }
+                    );
+            }
             _dbContext.SaveChanges();
 
-            return RedirectToAction("DescriptionForOwner", new { id = eventVM.CopiedId });
+            return RedirectToAction("DescriptionForOwner", new { id = eventVm.CopiedId });
         }
 
 
@@ -186,8 +203,6 @@ namespace BigEvent.Controllers
         [Authorize]
         public IActionResult Edit(int id)
         {
-
-
             var currentEvent = _dbContext.Events
                 .Include(e => e.Organizer)
                 .Include(e => e.Image)
