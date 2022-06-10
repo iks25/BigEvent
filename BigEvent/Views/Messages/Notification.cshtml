@@ -1,0 +1,36 @@
+﻿@model System.Collections.Generic.List<BigEvent.ViewModel.NotificationViewModel>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+@section StyleCss
+{
+    <link rel="stylesheet" href="~/css/userMessages.css" />
+}
+
+<h2>Notifications</h2>
+<ul class="list-group">
+    @foreach (var message in @Model)
+    {
+        var hasBeenSeen = (message.HasBeenRead) ? "messageHasBeenSeen" : "";
+        var messageId = "messageId_" + message.Id;
+        <li id=@messageId class="list-group-item @hasBeenSeen" onclick="selectMessageAsRead(this,@message.Id)">
+        @if (message.Type==MessageType.editMessage)
+        {
+            <span class="mr-2">
+              @message.EventName    
+            </span>
+             @message.Content 
+        }
+            
+            <span class="float-right deleteMessage" style="cursor: pointer">delete</span>
+        </li>
+    }
+    @* Todo display more options *@
+    <li class="list-group-item ">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item ">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item messageHasBeenSeen">Vestibulum at eros</li>
+</ul>

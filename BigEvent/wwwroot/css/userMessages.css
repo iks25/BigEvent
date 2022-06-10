@@ -1,0 +1,6 @@
+﻿.messageHasBeenSeen{
+    color: gray;
+}
+.list-group-item{
+    cursor: pointer;
+}

@@ -1,0 +1,29 @@
+﻿@model List<UserMessage>
+
+@{
+    ViewBag.Title = "Messages";
+    Layout = "_Layout";
+}
+@section StyleCss
+{
+    <link rel="stylesheet" href="~/css/userMessages.css" />
+}
+
+
+<h2>Messages</h2>
+<ul class="list-group">
+    @foreach (var userMessage in @Model)
+    {
+        var hasBeenSeen = (userMessage.HasBeenRead) ? "messageHasBeenSeen" : "";
+        var messageId = "messageId_" + userMessage.Id;
+        <li id=@messageId class="list-group-item @hasBeenSeen" onclick="selectMessageAsRead(this,@userMessage.Id)">
+            @userMessage.Message.Content
+            <span class="float-right deleteMessage" style="cursor: pointer">delete</span>
+        </li>
+    }
+    <li class="list-group-item ">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item ">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item messageHasBeenSeen">Vestibulum at eros</li>
+</ul>
