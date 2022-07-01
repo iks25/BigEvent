@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BigEvent.Controllers
 {
     [Authorize]
+    [TypeFilter(typeof(OnlyForBasicUserFilter))]
     public class UserController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
@@ -19,10 +20,14 @@ namespace BigEvent.Controllers
         }
         // GET
         
-        [TypeFilter(typeof(OnlyForBasicUserFilter))]
+        
         public IActionResult Saved()
         {
-            
+            return View();
+        }
+
+        public IActionResult Calendar()
+        {
             return View();
         }
     }

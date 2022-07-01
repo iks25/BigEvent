@@ -1,0 +1,52 @@
+﻿@using System.Globalization
+@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+@section StyleCssPartial
+{
+    <link rel="stylesheet" href="~/css/calendar.css" >
+}
+
+<h2>Calendar</h2>
+
+@{
+    var daysInWeek= new[] {"Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"};
+    
+    
+}
+
+<div id="calendar">
+    <div class="calendar-header">
+        month 2022 
+    </div>
+    <div class="calendar-weekdays">
+        
+        @{
+            foreach (var item in daysInWeek)
+            {
+                <div class="calendar-weekday">@item</div> 
+            }
+        }
+        
+    </div>
+    <div class="calendar-days">
+        @{
+            for (int i = 0; i < 35; i++)
+            {
+                <div class="calendar-day">
+                    @i
+                </div>
+            }
+        }
+    </div>
+</div>
