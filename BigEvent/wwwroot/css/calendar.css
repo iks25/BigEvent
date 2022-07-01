@@ -1,4 +1,9 @@
-﻿#calendar{
+﻿:root {
+    --current-day: #e2a677;
+    --current-day2: #1e90ff;
+}
+
+#calendar{
     border-radius: 5px;
     box-shadow: 2px 2px 10px #686868;
 }
@@ -32,9 +37,25 @@
    
 }
 .calendar-day{
-    padding-left: 10px;
-    padding-top: 10px;
+    padding: 5px;
     background-color: white;
     height: 100px;
     
+}
+.inactive-calendar-box{
+    background-color:#e2e2e2;
+}
+.current-day{
+    background-color: var(--current-day);
+}
+
+.legend-box{
+    width: 20px;
+    height: 20px;
+    border: 1px solid #1b1e21;
+    display: inline-block;
+    
+}
+.current-day-box{
+    background-color: var(--current-day);
 }

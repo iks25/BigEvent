@@ -7,13 +7,12 @@
 }
 
 @section StyleCssPartial
-{
-    <link rel="stylesheet" href="~/css/calendar.css" >
-}
+{<link rel="stylesheet" href="~/css/calendar.css"  >}
+@section ScriptsPartial
+{<script type="text/javascript" src="~/js/calendar.js" async></script>}
 
 <h2>Calendar</h2>
-
-@{
+@{  
     var daysInWeek= new[] {"Sun",
         "Mon",
         "Tue",
@@ -21,13 +20,16 @@
         "Thu",
         "Fri",
         "Sat"};
+
+    var currentMonth = DateTime.Today.Month;
     
     
 }
 
 <div id="calendar">
     <div class="calendar-header">
-        month 2022 
+        <span id="monthName"></span>
+        <span id="yearNr"></span>
     </div>
     <div class="calendar-weekdays">
         
@@ -41,12 +43,21 @@
     </div>
     <div class="calendar-days">
         @{
-            for (int i = 0; i < 35; i++)
+            for (int i = 0; i < 7*6; i++)
             {
-                <div class="calendar-day">
-                    @i
+                var recordId = "calRecord" + i;
+                <div id=@recordId class="calendar-day">
+                    
                 </div>
             }
         }
     </div>
+</div>
+
+<div class="mt-5">
+    <div class="mb-2"> legenda :</div>
+    <div>
+        <div class="legend-box current-day-box"></div> today
+    </div>
+
 </div>
