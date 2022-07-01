@@ -105,6 +105,7 @@ namespace BigEvent.Controllers
         [Authorize]
         public IActionResult Create(EventViewModel eventVM)
         {
+            //todo only for organizer
             Organizer organize = OrganizerHelper.GetCurrnetOrganizer(User, _dbContext);
 
             var newEvent = new Event()

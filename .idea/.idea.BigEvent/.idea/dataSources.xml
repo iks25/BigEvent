@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Microsoft SQL Server LocalDB (JetBrains)" uuid="bb8242a2-4c19-44b3-a89f-9abb3c7eaeb1">
+    <data-source source="LOCAL" name="aspnet-BigEvent-76B74557-CA35-4B42-BDD8-1CA9ADAD4EF1" uuid="05e786a2-cfb0-4460-bc56-4299f6d8b231">
       <driver-ref>sqlserver.localdb.jb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.jetbrains.jdbc.sqlserver.SqlServerDriver</jdbc-driver>
+      <jdbc-url>Server=(localdb)\MSSQLLocalDB;Database=aspnet-BigEvent-76B74557-CA35-4B42-BDD8-1CA9ADAD4EF1</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="LOCAL_DB_INSTANCE" value="MSSQLLocalDB" />
+      </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
