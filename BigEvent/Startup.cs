@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BigEvent.repository;
 
 namespace BigEvent
 {
@@ -40,7 +41,8 @@ namespace BigEvent
               services.AddControllersWithViews();*/
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-        .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped(typeof(CalendarRepository));
 
 
 

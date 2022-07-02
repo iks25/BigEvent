@@ -14,7 +14,10 @@ namespace BigEvent.Controllers
         private UserManager<ApplicationUser> UserManager;
         private readonly ClaimsPrincipal _currentUser;
 
-        public UserIdentityHelper(ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager, ClaimsPrincipal currentUser)
+        public UserIdentityHelper
+        (ApplicationDbContext dbContext,
+            UserManager<ApplicationUser> userManager,
+            ClaimsPrincipal currentUser)
         {
             _dbContext = dbContext;
             UserManager = userManager;
@@ -29,7 +32,6 @@ namespace BigEvent.Controllers
             {
                 return _dbContext.BasicUsers
                     .FirstOrDefault(u => u.ApplicationDbContextId.Equals(ApplicationUser.Id)).BasicUserId;
-
             }
         }
 
@@ -45,7 +47,6 @@ namespace BigEvent.Controllers
         public bool isBasicUser()
         {
             return (ApplicationUser.Type == UserType.BasicUser);
-
         }
 
 

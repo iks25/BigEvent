@@ -1,9 +1,79 @@
-﻿@model dynamic
+﻿@model List<Event>
 
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
 
+@section StyleCss{
+    <link rel="stylesheet" href="~/css/eventsList.css"/>
+}
+@section ScriptsPartial
+{<script type="text/javascript" src="~/js/saved.js" async></script>}
+
 <h2>title</h2>
 saved
+
+
+@foreach (var _event in Model)
+{
+    var divId = "js-event-eiv-" + _event.Id;
+    <div id=@divId>
+        <div class="mb-3">
+            <hr/>
+
+            <div class="eventContainer">
+                <a class="non-decoration" asp-controller="Event" asp-action="Description" asp-route-id="@_event.Id">
+
+                    <div class="event-img">
+                        <img src=@_event.Image.Src alt=@_event.Image.Name/>
+                    </div>
+                </a>
+                <div class="mt-2">
+                    @* <div class="event-data"  *@
+                    @*      style="color: black; font-weight: bolder;font-size: 1.5em"> *@
+                    @*     @_event.DateTime.ToString("MM/dd/yyyy HH:mm") *@
+                    @* </div> *@
+                    <a class="non-decoration" asp-controller="Event" asp-action="Description" asp-route-id="@_event.Id">
+
+                        <div class="event-name">
+                            @_event.Name
+                        </div>
+                    </a>
+                    <div class="event-host-div">
+                        <span>
+                            @{
+                                //todo change link to organizer
+                            }
+                            <a class="event-host" href="">@_event.Organizer.Name</a>
+                        </span>
+                        <div class="event-type">
+                            @_event.Type.Name
+                        </div>
+                    </div>
+                    <div class="event-time">
+                        @_event.DateTime.ToString("MM/dd/yyyy HH:mm")
+                    </div>
+                </div>
+                <div class="event-links">
+
+
+                </div>
+
+
+            </div>
+            <div class="event-links">
+
+                @{
+                        //todo handle delete event  
+                }
+                <div class="event-icons mb-3 delete-button" 
+                     onclick="deleteEventInSaved(@_event.Id)"
+                     >
+                        <i style="color: black" class="bi bi-trash3 "></i>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+}

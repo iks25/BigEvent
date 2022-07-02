@@ -24,7 +24,7 @@
 }
 .calendar-weekday{
     padding-left: 10px;
-    background-color: #c6c8ca;
+    background-color: gray;
     /*text-align: center;*/
 }
 .calendar-days{

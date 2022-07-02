@@ -118,6 +118,14 @@ hr {
 .bi-bell-fill {
     color: black !important;
 }
+.delete-button{
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+.delete-button:hover{
+    background-color: #ffc79c ;
+}
 
 @media (max-width: 769px) {
     .event-img img {
