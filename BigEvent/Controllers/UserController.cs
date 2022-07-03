@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace BigEvent.Controllers
 {
@@ -43,7 +44,14 @@ namespace BigEvent.Controllers
 
         public IActionResult Calendar()
         {
-            return View();
+            var userIdentityHelper =
+                new UserIdentityHelper(_dbContext, _userManager, User);
+            var userId = userIdentityHelper.BasicUserId;
+
+            var events =
+                _calendarRepository.GetUserFullEvent(userId).ToList();
+            
+            return View(events);
         }
         
         

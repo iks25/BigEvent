@@ -1,5 +1,6 @@
 ﻿@using System.Globalization
-@model dynamic
+@using Newtonsoft.Json
+@model List<Event>
 
 @{
     ViewBag.Title = "title";
@@ -9,7 +10,26 @@
 @section StyleCssPartial
 {<link rel="stylesheet" href="~/css/calendar.css"  >}
 @section ScriptsPartial
-{<script type="text/javascript" src="~/js/calendar.js" async></script>}
+{<script type="text/javascript" src="~/js/calendar.js" async></script>
+    <script>
+    @{
+        var dates = Model.Select(e =>
+         new {
+           id=e.Id,  
+           name=e.Name,  
+           day= e.DateTime.Day,
+           month=e.DateTime.Month,
+           year=e.DateTime.Year,
+           time=e.DateTime.TimeOfDay  
+        });
+    }
+    
+    //list of events in calendar js 
+    events=@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dates) as String);
+
+    </script>
+}
+@Model[1].Name
 
 <h2>Calendar2222</h2>
 @{  
@@ -51,16 +71,28 @@
             for (int i = 0; i < 7*6; i++)
             {
                 var recordId = "calRecord" + i;
-                <div id=@recordId class="calendar-day">
+                if (i % 7 == 0)
+                {
                     
-                </div>
+                    <div id=@recordId class="calendar-day sunday">
+                    </div>
+                }
+                else
+                if ((i + 1) % 7==0)
+                {
+                    <div id=@recordId class="calendar-day saturday"></div>  
+                }else
+                {
+                    <div id=@recordId class="calendar-day">
+                    </div>
+                }
             }
         }
     </div>
 </div>
 
 <div class="mt-5">
-    <div class="mb-2"> legenda :</div>
+    <div class="mb-2"> legend:</div>
     <div>
         <div class="legend-box current-day-box"></div> today
     </div>

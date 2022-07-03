@@ -4,7 +4,23 @@ let today=new Date();
 
 var yearInCalendar=today.getFullYear();
 var monthInCalendar=today.getMonth();
+var events;
+
+console.log("changes");
 // setCalendar(today.getMonth())
+//
+// var eventsInCalendar=$.ajax({
+//     method:"GET",
+//     url:"~/../api/calendar/EventInCalendar",
+//     success:(result)=>{
+//         events=result;
+//         console.log("ok----->",result);
+//     },
+//     error:(error)=>{
+//         console.log("error----->",error);
+//     }
+// })
+
 setCalendarByMonth(monthInCalendar,yearInCalendar);
 
 $("#previousMonthButton").click(()=>{
@@ -28,7 +44,8 @@ $("#nextMonthButton").click(()=>{
 })
 
 function setCalendarByMonth(monthNr,yearNr){
-    
+
+    console.log("events -> ",events)
     
     let monthStart=new Date(yearNr,monthNr,1);
      let monthName=monthStart.toLocaleString("en-US", { month: "long" });
@@ -56,6 +73,12 @@ function setCalendarByMonth(monthNr,yearNr){
         $("#"+firstDayBoxId).removeClass(currentDateCss);
         if(IsTheSameDate(currentDay,today)){
             $("#"+firstDayBoxId).addClass(currentDateCss);
+            $("#"+firstDayBoxId).append(
+                "<div class='text-center text-dark'>\n" +
+                    "<i class=\"bi bi-star-fill\"></i>\n" +
+                    "<i class=\"bi bi-star-fill\"></i>\n" +
+                "</div>");
+            
         }
 
         currentDay.setDate(currentDay.getDate()+1);

@@ -67,3 +67,9 @@
 .arrow-button:active{
     background-color: #c6c6c6;
 }
+.sunday{
+    color: darkred; 
+}
+.saturday{
+    color: darkblue;
+}

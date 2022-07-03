@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using BigEvent.repository;
 
 namespace BigEvent.API
 {
@@ -21,11 +22,15 @@ namespace BigEvent.API
         */
         private ApplicationDbContext _dbContext;
         private UserManager<ApplicationUser> _userManager;
+        private readonly CalendarRepository _calendarRepository;
 
-        public CalendarController(ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager)
+        public CalendarController(ApplicationDbContext dbContext,
+            UserManager<ApplicationUser> userManager,
+            CalendarRepository calendarRepository)
         {
             _dbContext = dbContext;
             _userManager = userManager;
+            _calendarRepository = calendarRepository;
         }
 
         // POST: api/TodoItems
@@ -96,6 +101,28 @@ namespace BigEvent.API
             _dbContext.SaveChanges(true);
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("EventInCalendar")]
+        [Authorize]
+        public IActionResult GetEventsCalendar()
+        {
+            var userIdentityHelper =
+                new UserIdentityHelper(_dbContext, _userManager, User);
+            if (!userIdentityHelper.isBasicUser())
+            {
+                return Unauthorized();
+            }
+            
+            
+            var userId = userIdentityHelper.BasicUserId;
+
+            var events =
+                _calendarRepository.GetUserFullEvent(userId).ToList();
+
+            
+            return Ok(events);
         }
 
     }
