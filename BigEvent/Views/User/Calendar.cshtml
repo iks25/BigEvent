@@ -11,7 +11,7 @@
 @section ScriptsPartial
 {<script type="text/javascript" src="~/js/calendar.js" async></script>}
 
-<h2>Calendar</h2>
+<h2>Calendar2222</h2>
 @{  
     var daysInWeek= new[] {"Sun",
         "Mon",
@@ -30,6 +30,11 @@
     <div class="calendar-header">
         <span id="monthName"></span>
         <span id="yearNr"></span>
+        
+        <span class="float-right mx-3">
+            <i id="previousMonthButton" class="bi bi-caret-left-fill arrow-button" style="cursor: pointer"></i>
+            <i id="nextMonthButton" class="bi bi-caret-right-fill arrow-button" style="cursor: pointer; margin-left: -7px"></i>
+        </span>
     </div>
     <div class="calendar-weekdays">
         

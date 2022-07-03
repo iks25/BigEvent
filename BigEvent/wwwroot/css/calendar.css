@@ -59,3 +59,11 @@
 .current-day-box{
     background-color: var(--current-day);
 }
+.arrow-button{
+    
+    padding: 0 3px;
+    border-radius: 50%;
+}
+.arrow-button:active{
+    background-color: #c6c6c6;
+}
