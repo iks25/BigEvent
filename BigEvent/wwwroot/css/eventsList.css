@@ -79,7 +79,7 @@ hr {
 
 
 .cursor-pointer {
-    cursor: pointer;
+    cursor: pointer !important;
 }
 
 .date-separator {

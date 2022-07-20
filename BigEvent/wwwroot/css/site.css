@@ -21,6 +21,7 @@ body {
     --color3: #ffc79c;
 }
 
+
 .color2{
     color:var(--color2);
 }
@@ -132,7 +133,9 @@ body {
     background-color: #ffc79c;
     color: white !important; 
 }
-
+.pointer{
+    cursor: pointer;
+}
 /*-------------------- bootstrap override ------------------------*/
 .navbar-brand {
     font-family: Jokerman;
@@ -160,3 +163,4 @@ html {
 body {
     background-color: var(--bagroundColor);
 }
+
