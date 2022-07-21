@@ -135,7 +135,10 @@
 .cal-window hr{
     border-top: 1px solid rgba(0,0,0,0.5);
 }
-
+.scrollEvents{
+    overflow-y:auto;
+    max-height: 310px;
+}
 
 
 .event-item img{

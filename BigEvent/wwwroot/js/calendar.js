@@ -1,5 +1,4 @@
-﻿console.log("kurwa co jest")
-let today=new Date();
+﻿let today=new Date();
 
 var yearInCalendar=today.getFullYear();
 var monthInCalendar=today.getMonth();
@@ -85,7 +84,6 @@ function setCalendarByMonth(monthNr,yearNr){
                 stars +
                 "</div>");
             currentDayDiv.addClass("pointer");
-            console.log("====>",currentDay.getDate());
             let dayWithEvents={
                 day:currentDay.getDate(),
                 month: currentDay.getMonth(),
@@ -165,15 +163,21 @@ function changeDateInPopupWindow(date) {
         && e.year==date.year
     )
 
-    console.log("ooooooooooo")
-    console.log(eventsInThatDay)
-    let eventItem=createEventItem(eventsInThatDay[0]);
-    console.log(eventItem)
-    $("#js-popup-content").html($("#js-popup-content").html()+eventItem);
+
+   
+
+    let eventsItem=createEventsItem(eventsInThatDay);
+    
+    //adding scrollbar if needed
+    let maxItemsWithoutScrollBar=3;
+    if (eventsInThatDay.length>maxItemsWithoutScrollBar){
+        eventsItem="<div class='scrollEvents'>"+eventsItem+"</div>"
+    }
+    
+    $("#js-popup-content").html(eventsItem);
 }
 
 function createEventItem(eventData) {
-    console.log(typeof eventData.time)
     return `
     <div class="event-item">
             <img src="${eventData.img}"/>
@@ -190,4 +194,12 @@ function createEventItem(eventData) {
     </div>
     
     `
+}
+
+function createEventsItem(eventsInThatDay) {
+    let htmlContent="";
+    for (const eventData of eventsInThatDay) {
+        htmlContent+=createEventItem(eventData);
+    }
+    return htmlContent;
 }
