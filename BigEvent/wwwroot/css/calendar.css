@@ -107,16 +107,16 @@
     font-weight: bold;
     padding-bottom: 5px;
     border-bottom: 1px solid gray;
-    margin-bottom: 5px;
+
 }
 .event-item{
     display: grid;
     grid-template-columns: auto 1fr auto;
     font-size: 32px;
     font-weight: bold;
-    padding-top: 5px;
-    padding-bottom: 0px;
-    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
     border-bottom: 1px solid rgba(0,0,0,0.71);
 }
 .popup-name-time{
@@ -138,6 +138,26 @@
 .scrollEvents{
     overflow-y:auto;
     max-height: 310px;
+}
+a.event-item{
+    text-decoration: none;
+    color: black;
+    
+}
+a.event-item:hover{
+    background-color: rgba(243,217,177,0.71);
+}
+.delete-icon-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    width: 60px;
+    height: 60px;
+}
+.delete-icon-button:hover{
+    background-color: rgba(243,0,8,0.39);
+    border-radius: 50%;
 }
 
 

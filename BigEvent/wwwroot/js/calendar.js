@@ -155,7 +155,7 @@ function showPopWindow() {
 
 function changeDateInPopupWindow(date) {
     let month=date.month+1;
-    $("#js-head-popup").html(date.day+"-"+month+"-"+date.year+"zzz");
+    $("#js-head-popup").html(date.day+"-"+month+"-"+date.year);
 
     let eventsInThatDay=events.filter(e=>
         e.day==date.day
@@ -178,8 +178,9 @@ function changeDateInPopupWindow(date) {
 }
 
 function createEventItem(eventData) {
+    let itemId="js-event-item-"+eventData.id;
     return `
-    <div class="event-item">
+    <a href="../Event/Description/${eventData.id}" class="event-item" id=${itemId}>
             <img src="${eventData.img}"/>
       
         <div class="popup-name-time">
@@ -190,10 +191,30 @@ function createEventItem(eventData) {
                 ${eventData.time}
             </div>      
         </div>
+        <div class="delete-icon-button"
+         onmouseover=parentDoesNotChange(this) 
+         onmouseleave=parentDoesNotChangeLeave(this)
+         onclick=deleteEventFromCalendar(this,${eventData.id},)
+         >
             <i style="color: black" class="bi bi-trash3 me-2 p-3 "></i>
-    </div>
-    
+        </div>
+    </a>
     `
+}
+function deleteEventFromCalendar(deleteButton,eventId) {
+    console.log(eventId)
+    $(deleteButton).parent().fadeOut();
+    //todo handle delete from db
+    //todo reload side or something after delete item
+    
+}
+function parentDoesNotChangeLeave(deleteButton) {
+    $(deleteButton).parent().removeClass("bg-white");
+    $(deleteButton).parent().unbind("click");
+}
+function parentDoesNotChange(deleteButton) {
+       $(deleteButton).parent().addClass("bg-white");
+       $(deleteButton).parent().on("click",(e)=>{e.preventDefault()});
 }
 
 function createEventsItem(eventsInThatDay) {
