@@ -204,8 +204,19 @@ function createEventItem(eventData) {
 function deleteEventFromCalendar(deleteButton,eventId) {
     console.log(eventId)
     $(deleteButton).parent().fadeOut();
-    //todo handle delete from db
-    //todo reload side or something after delete item
+     $.ajax({
+         method:"DELETE",
+         url:"../api/Calendar/DeleteEvent/"+eventId,
+         error:(error)=>{
+             console.log(error);
+         },
+         success:()=>{
+             events=events.filter(e=>e.id!==eventId);
+             console.log("event"+eventId+" was deleted from calendar");
+             //todo change stars or reload side after delete
+         }
+     })
+   
     
 }
 function parentDoesNotChangeLeave(deleteButton) {
