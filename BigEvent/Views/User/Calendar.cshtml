@@ -20,7 +20,8 @@
            day= e.DateTime.Day,
            month=e.DateTime.Month,
            year=e.DateTime.Year,
-           time=e.DateTime.TimeOfDay  
+           time=e.DateTime.ToString("hh:mm"),
+           img=e.Image.Src    
         });
     }
     
@@ -115,16 +116,24 @@
 
 <div class="cal-popup-background">
     <div class="cal-window" id="js-calWindow">
-        <div class="head-window" >25-02-2021</div>
-        <div class="cal-window-content">
+        <div class="head-window" id="js-head-popup" ></div>
+        <div class="cal-window-content" id="js-popup-content">
+                     
             <div class="event-item">
-                <img  src="~/imagesGallery/default.jpg"/>
-                @Model[0].Name @Model[0].DateTime.TimeOfDay
-                
-                <i style="color: black" class="bi bi-trash3 float-right me-2 p-3 " ></i>  
-                <hr/> 
-                 
+               
+                    <img src="~/imagesGallery/default.jpg"/>
+              
+                <div class="popup-name-time">
+                    <div class="popup-name">
+                        @Model[0].Name
+                    </div>
+                    <div class="popup-time">
+                        @Model[0].DateTime.TimeOfDay
+                    </div>      
+                </div>
+                    <i style="color: black" class="bi bi-trash3 me-2 p-3 "></i>
             </div>
+                
         </div>
         
         

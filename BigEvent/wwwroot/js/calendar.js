@@ -1,5 +1,4 @@
-﻿
-    
+﻿console.log("kurwa co jest")
 let today=new Date();
 
 var yearInCalendar=today.getFullYear();
@@ -86,7 +85,21 @@ function setCalendarByMonth(monthNr,yearNr){
                 stars +
                 "</div>");
             currentDayDiv.addClass("pointer");
+            console.log("====>",currentDay.getDate());
+            let dayWithEvents={
+                day:currentDay.getDate(),
+                month: currentDay.getMonth(),
+                year:currentDay.getFullYear(),
+            }
             //todo add popup window with items on that day
+            currentDayDiv.on("click",event => {
+                
+                
+                showPopWindow();
+                changeDateInPopupWindow(dayWithEvents);
+            })
+            
+            // showPopWindow();
             
         }
 
@@ -110,16 +123,71 @@ function IsTheSameDate(date1,date2) {
 //////////////////////////handle popup window disappear
 
 let bgDiv=$(".cal-popup-background");
-let calWindow=document.getElementById("js-calWindow")
+let calWindow=document.getElementById("js-calWindow");
+let isPopUpVisible=false;
+if(!isPopUpVisible){
+    bgDiv.hide();
+    $(calWindow).hide();
+}
 
 document.addEventListener("click",event => {
+    if(!isPopUpVisible)
+       return;
+    
     const isClickInside = calWindow.contains(event.target);
-
     //hide PopWindow
     if (!isClickInside) {
+        
         $(calWindow).fadeOut();
-        bgDiv.fadeOut("slow")
+        bgDiv.fadeOut("slow");
+        isPopUpVisible=false;
     }
+    
 });
+/////////////////////////////////////
 
+function showPopWindow() {
+        
+    bgDiv.css("visibility","visible");
+    $(calWindow).fadeIn("slow",()=>{
+         isPopUpVisible=true;
+    });
+    bgDiv.fadeIn("fast");
+}
 
+function changeDateInPopupWindow(date) {
+    let month=date.month+1;
+    $("#js-head-popup").html(date.day+"-"+month+"-"+date.year+"zzz");
+
+    let eventsInThatDay=events.filter(e=>
+        e.day==date.day
+        && e.month==date.month
+        && e.year==date.year
+    )
+
+    console.log("ooooooooooo")
+    console.log(eventsInThatDay)
+    let eventItem=createEventItem(eventsInThatDay[0]);
+    console.log(eventItem)
+    $("#js-popup-content").html($("#js-popup-content").html()+eventItem);
+}
+
+function createEventItem(eventData) {
+    console.log(typeof eventData.time)
+    return `
+    <div class="event-item">
+            <img src="${eventData.img}"/>
+      
+        <div class="popup-name-time">
+            <div class="popup-name">
+                ${eventData.name}
+            </div>
+            <div class="popup-time">
+                ${eventData.time}
+            </div>      
+        </div>
+            <i style="color: black" class="bi bi-trash3 me-2 p-3 "></i>
+    </div>
+    
+    `
+}
