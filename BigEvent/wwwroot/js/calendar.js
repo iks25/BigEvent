@@ -4,6 +4,8 @@ var yearInCalendar=today.getFullYear();
 var monthInCalendar=today.getMonth();
 var events;
 
+var selectedDayDiv;
+var selectedDay;
 
 setCalendarByMonth(monthInCalendar,yearInCalendar);
 
@@ -26,6 +28,49 @@ $("#nextMonthButton").click(()=>{
     }
     setCalendarByMonth(monthInCalendar,yearInCalendar);
 })
+
+function addingStarsToDay(currentDay, currentDayDiv) {
+    let nrEventInThisDay = 0;
+    for (let item of events) {
+
+        if (currentDay.getDate() == item.day
+            && currentDay.getMonth() == item.month
+            && currentDay.getFullYear() == item.year
+        ) {
+            nrEventInThisDay++;
+        }
+    }
+    if (nrEventInThisDay > 0) {
+        let stars = "<i class=\"bi bi-star-fill\"></i>\n"
+        if (nrEventInThisDay == 2)
+            stars = stars + stars;
+        if (nrEventInThisDay >= 3)
+            stars = stars + stars + stars;
+
+        currentDayDiv.append(
+            "<div class='text-center text-dark'>\n" +
+            stars +
+            "</div>");
+        currentDayDiv.addClass("pointer");
+        let dayWithEvents = {
+            day: currentDay.getDate(),
+            month: currentDay.getMonth(),
+            year: currentDay.getFullYear(),
+        }
+        //todo add popup window with items on that day
+        currentDayDiv.on("click", event => {
+            selectedDayDiv = currentDayDiv;
+            selectedDay = new Date(dayWithEvents.year,dayWithEvents.month,dayWithEvents.day);
+
+            showPopWindow();
+            changeDateInPopupWindow(dayWithEvents);
+        })
+
+        // showPopWindow();
+
+
+    }
+}
 
 function setCalendarByMonth(monthNr,yearNr){
     
@@ -62,51 +107,20 @@ function setCalendarByMonth(monthNr,yearNr){
             
         }
         ////////////////////////handle adding stars
-        let nrEventInThisDay=0;
-        for (let item  of events) {
-            
-            if(currentDay.getDate()==item.day
-                &&currentDay.getMonth()==item.month
-                &&currentDay.getFullYear()==item.year
-            ){
-                nrEventInThisDay++;
-            }
-        }
-        if(nrEventInThisDay>0){
-            let stars="<i class=\"bi bi-star-fill\"></i>\n" 
-            if(nrEventInThisDay==2)
-                stars=stars+stars;
-            if(nrEventInThisDay>=3)
-                stars=stars+stars+stars;
-            
-            currentDayDiv.append(
-                "<div class='text-center text-dark'>\n" +
-                stars +
-                "</div>");
-            currentDayDiv.addClass("pointer");
-            let dayWithEvents={
-                day:currentDay.getDate(),
-                month: currentDay.getMonth(),
-                year:currentDay.getFullYear(),
-            }
-            //todo add popup window with items on that day
-            currentDayDiv.on("click",event => {
-                
-                
-                showPopWindow();
-                changeDateInPopupWindow(dayWithEvents);
-            })
-            
-            // showPopWindow();
-            
-        }
+        addingStarsToDay(currentDay, currentDayDiv);
 
+
+        ////////////////
+        /////////////////
+        
         ////////////////////////handle adding stars
 
         currentDay.setDate(currentDay.getDate()+1);
 
     }
 }
+
+
 
 
 
@@ -202,7 +216,6 @@ function createEventItem(eventData) {
     `
 }
 function deleteEventFromCalendar(deleteButton,eventId) {
-    console.log(eventId)
     $(deleteButton).parent().fadeOut();
      $.ajax({
          method:"DELETE",
@@ -213,6 +226,12 @@ function deleteEventFromCalendar(deleteButton,eventId) {
          success:()=>{
              events=events.filter(e=>e.id!==eventId);
              console.log("event"+eventId+" was deleted from calendar");
+
+             selectedDayDiv.removeClass("pointer");
+             //item with stars
+             selectedDayDiv.find("div").remove();
+             addingStarsToDay(selectedDay,selectedDayDiv);
+             
              //todo change stars or reload side after delete
          }
      })
