@@ -1,0 +1,53 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "About";
+    Layout = "_Layout";
+}
+
+<div class="row">
+    
+    <div class="col-md-6">
+        <div>
+            <h3>About</h3>
+            <p>
+                BigEvent is demo app when organizers can add events and users can save and see them in calendar.
+            </p>
+
+            <h3>Used Technologies:</h3>
+            <ul>
+                <li>Asp.net Core</li>
+                <li>Bootstrap</li>
+                <li>Inkscape</li>
+            </ul>
+            
+            <h3>Links:</h3>
+            @{
+                //todo links to portfolio and tp
+            }
+           <ul>
+               <a href="http://">
+                   <li>Asp.net Core</li>
+               </a>
+
+               <a href="">
+                   <li>SourceCode (gitHub)</li>
+               </a>
+               
+               <a href="https://igor-kozerski.com/">
+                   <li>Igor Kozerski Portfolio</li>
+               </a>
+           </ul> 
+        </div>
+   
+
+        
+    </div>     
+    
+    
+    
+    <div class="col-md-5 p-5">
+        <img src="~/icons/about.svg" alt="about icon" width="200px"/>
+        
+    </div>
+</div>

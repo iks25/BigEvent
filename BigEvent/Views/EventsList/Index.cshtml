@@ -92,6 +92,16 @@
             </div>
             <div class="event-time">
                 @_event.DateTime.ToString("HH:mm")
+                
+                @if (_event.Price==0)
+                {
+                    <span class="event-price">free</span>
+                }
+                else
+                {
+                    <span class="event-price">£@_event.Price</span>
+                }
+                
             </div>
         </div>
         <div class="event-links">
@@ -99,7 +109,7 @@
 
             @if (isUserSignedIn&&isBasicUser)
                 {
-                    <div>@_event.IsInCalendar</div>
+                   
                     string isInCallendar = (@_event.IsInCalendar) ? "yes" : "no";
                     string icon = (@_event.IsInCalendar) ? "bi-bell-fill" : "bi-bell";
                     <div class="event-icons">

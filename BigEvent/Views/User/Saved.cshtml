@@ -1,7 +1,7 @@
 ﻿@model List<Event>
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "saved";
     Layout = "_Layout";
 }
 
@@ -11,11 +11,13 @@
 @section ScriptsPartial
 {<script type="text/javascript" src="~/js/saved.js" async></script>}
 
-<h2>title</h2>
-saved
+<h2>SAVED</h2>
 
+@{
+    var sortedEvent = Model.OrderBy(e => e.DateTime);
+}
 
-@foreach (var _event in Model)
+@foreach (var _event in sortedEvent)
 {
     var divId = "js-event-eiv-" + _event.Id;
     <div id=@divId>
@@ -30,10 +32,6 @@ saved
                     </div>
                 </a>
                 <div class="mt-2">
-                    @* <div class="event-data"  *@
-                    @*      style="color: black; font-weight: bolder;font-size: 1.5em"> *@
-                    @*     @_event.DateTime.ToString("MM/dd/yyyy HH:mm") *@
-                    @* </div> *@
                     <a class="non-decoration" asp-controller="Event" asp-action="Description" asp-route-id="@_event.Id">
 
                         <div class="event-name">
@@ -52,7 +50,7 @@ saved
                         </div>
                     </div>
                     <div class="event-time">
-                        @_event.DateTime.ToString("MM/dd/yyyy HH:mm")
+                        @_event.DateTime.ToString("dd/MM/yyyy HH:mm")
                     </div>
                 </div>
                 <div class="event-links">

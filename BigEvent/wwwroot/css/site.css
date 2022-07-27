@@ -9,6 +9,9 @@ for details on configuring this project to bundle and minify static web assets. 
     font-family: Inter;
     src: url(Inter-VariableFont_slnt,wght.ttf);
 }
+h2{
+    font-family: Jokerman;
+}
 
 body {
     font-family: Inter
@@ -21,9 +24,12 @@ body {
     --color3: #ffc79c;
 }
 
+.color1 {
+    color: var(--color1);
+}
 
-.color2{
-    color:var(--color2);
+.color2 {
+    color: var(--color2);
 }
 
 .font-title {
@@ -53,8 +59,17 @@ a {
     border-color: #1861ac;
 }
 
+.home-link {
+    text-shadow: -1px 1px black;
+}
 
 
+.about-icon{
+    font-family: Jokerman;
+    font-size: 200px;
+    color: white;
+    text-shadow: -8px 8px var(--color1) ;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -103,20 +118,22 @@ body {
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
 }
-.non-decoration{
-    text-decoration:none !important;
+
+.non-decoration {
+    text-decoration: none !important;
 }
-.nav-icon-link{
+
+.nav-icon-link {
     font-size: large;
     width: 40px;
     height: 40px;
     text-align: center;
-    border-radius:50%;
+    border-radius: 50%;
     position: relative;
-    margin-left: 3px        ;
+    margin-left: 3px;
 }
-.notification-nr
-{
+
+.notification-nr {
     top: 2px;
     left: 20px;
     position: absolute;
@@ -129,11 +146,13 @@ body {
     color: white;
     outline: 2px solid white;
 }
-.nav-icon-link:hover{
+
+.nav-icon-link:hover {
     background-color: #ffc79c;
-    color: white !important; 
+    color: white !important;
 }
-.pointer{
+
+.pointer {
     cursor: pointer;
 }
 /*-------------------- bootstrap override ------------------------*/
@@ -163,4 +182,3 @@ html {
 body {
     background-color: var(--bagroundColor);
 }
-
