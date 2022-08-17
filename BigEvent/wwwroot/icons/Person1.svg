@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="500"
+   height="500"
+   viewBox="0 0 132.29166 132.29167"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="Person1.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.71446409"
+     inkscape:cx="98.675359"
+     inkscape:cy="461.18483"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     units="px" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:#ffffff;stroke-width:0.858173;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+       id="path894"
+       cx="67.410835"
+       cy="36.493492"
+       rx="27.013197"
+       ry="33.369244" />
+    <path
+       id="rect1026"
+       style="fill:#ffffff;stroke-width:0.858173;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+       d="m 67.41076,76.863723 c -22.62403,0 -40.837685,18.213656 -40.837685,40.837687 v 12.18044 h 81.675375 v -12.18044 c 0,-22.624031 -18.21366,-40.837687 -40.83769,-40.837687 z" />
+    <g
+       id="path1343"
+       inkscape:transform-center-x="-1.6222402e-06"
+       inkscape:transform-center-y="1.3442603"
+       transform="matrix(0.04295556,0,0,0.04295556,131.77554,97.263356)" />
+  </g>
+</svg>

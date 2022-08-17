@@ -33,7 +33,7 @@ body {
 }
 
 .font-title {
-    font-family: Jokerman;
+    font-family: Jokerman !important;
 }
 
 a.navbar-brand {

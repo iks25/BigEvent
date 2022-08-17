@@ -1,0 +1,30 @@
+﻿
+.btn-user:hover{
+    background-color: #9a4600;
+    color: white;
+       
+}
+.btn-organizer:hover{
+    background-color: #09609a;
+    color: white;
+}
+
+.btn-user-type{
+    width: 110px;
+    border-right: 2px solid whitesmoke;
+    padding-right: 5px;
+}
+
+.btn-login{
+    border-radius: 10px;
+    background-color: #6c757d;
+    color: whitesmoke;
+    box-shadow: 2px 2px 5px black;
+    font-size: large;
+}
+.btn-login:hover{
+    /*background-color: #0b6320;*/
+    color: white;
+    text-decoration: none !important;
+    /*box-shadow: 2px 0px 5px  black;*/
+}

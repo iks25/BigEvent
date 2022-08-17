@@ -1,0 +1,61 @@
+﻿.home-icons{
+    display: grid;
+    grid-template: "add list cal"
+                    ". login .";
+    
+    margin-top: 50px;
+}
+.icon-add{
+    margin-top: 90px;
+    grid-area: add;
+}
+.icon-list{
+    grid-area: list;
+}
+.icon-calendar{
+    margin-top: 130px;
+    grid-area: cal;
+}
+.icon-login{
+    margin-left: -80px;
+    margin-top: -50px;
+    grid-area: login;
+}
+
+a.icon-link{
+    color: #343a40;
+    max-width: 200px;
+    display: block;
+    margin:0 auto ;
+}
+a.icon-link:hover{
+    text-decoration: none;
+}
+a.icon-link:hover .icon-link-title{
+    text-decoration: underline;
+}
+.icon-link-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .home-icons{
+        display: grid;
+        grid-template: "list login"
+                        "add cal";
+    }
+    .icon-login{
+        margin-left: 0;
+        margin-top: 0;
+    }
+    
+    .icon-list{
+        margin-top: 60px;
+    }
+    
+    .icon-calendar{
+        margin-top: -10px;
+        margin-left: 20px;
+    }
+}

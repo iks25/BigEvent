@@ -2,14 +2,86 @@
     ViewData["Title"] = "Home Page";
 }
 
+@section StyleCssPartial{
+    <link rel="stylesheet" href="~/css/home.css"/>
+}
 
 <div class="text-center">
     <h1 class="display-4 font-title welcome ">Welcome In Big Event</h1>
-    <hr/>
-    <div class="col-7 text-left">
-        <h3 >
-            BigEvent is demo app when organizers can add event and user can save and see in calendar
-        </h3>
+
+    <div class="home-icons">
+        <div class="icon-list">
+            <a class="icon-link" href="">
+                <img src="~/icons/List.svg" alt="list icon">
+                <div class="text-center icon-link-title ">
+                    Events List
+                </div>
+                <div class="icon-link-description">
+                    look at all events and save if you want attend
+                </div>
+            </a>
+        </div>
+
+        <div class="icon-add">
+            <a class="icon-link" href="">
+                <img src="~/icons/add.svg" alt="add icon">
+                <div class="text-center icon-link-title ">
+                    Add Event
+                </div>
+                <div class="icon-link-description">
+                    look all events and save if you want come
+                </div>
+            </a>
+        </div>
+
+        <div class="icon-calendar">
+            <a class="icon-link" href="">
+                <img src="~/icons/calendar.svg" alt="calendar icon">
+                <div class="text-center icon-link-title ">
+                    Calendar
+                </div>
+                <div class="icon-link-description">
+                    look all events and save if you want come
+                </div>
+            </a>
+        </div>
+
+        <div class="icon-login">
+            <a class="icon-link" href="">
+                <img src="~/icons/login.svg" alt="login icon">
+                <div class="text-center icon-link-title ">
+                    Login
+                </div>
+                <div class="icon-link-description">
+                    look all events and save if you want come
+                </div>
+            </a>
+        </div>  
+        @* <div class="col-4 "> *@
+        @* *@
+        @*     <img src="~/icons/add.svg" alt="add icon"> *@
+        @*     <div class="text-center"> *@
+        @*         Add Events *@
+        @*     </div> *@
+        @* </div> *@
+        @* *@
+        @* *@
+        @* <div class="col-4 mt-5"> *@
+        @*     <img src="~/icons/calendar.svg" alt="add icon"> *@
+        @*     <div class="text-center"> *@
+        @*         Calendar *@
+        @*     </div> *@
+        @* </div> *@
+        @* *@
+        @* <div class="col-4"></div> *@
+        @* *@
+        @* <div class="col-4"> *@
+        @*     <img src="~/icons/login.svg" alt="add icon"> *@
+        @*     <div class="text-center"> *@
+        @*         Login *@
+        @*     </div> *@
+        @* </div> *@
+        @* *@
+        @* <div class="col-4"></div> *@
     </div>
 </div>
-

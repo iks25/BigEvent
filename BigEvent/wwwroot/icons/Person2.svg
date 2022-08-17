@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="500"
+   height="500"
+   viewBox="0 0 132.29166 132.29167"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <g
+     id="layer1">
+    <ellipse
+       style="fill:#ffffff;stroke-width:0.858173;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+       id="path894"
+       cx="67.410835"
+       cy="36.493492"
+       rx="27.013197"
+       ry="33.369244" />
+    <path
+       id="rect1026"
+       style="fill:#ffffff;stroke-width:3.24349;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+       d="M 254.78125 290.50781 C 169.27311 290.50781 100.43359 359.34732 100.43359 444.85547 L 100.43359 490.89258 L 214.03516 490.89258 L 222.26758 462.78516 L 245.29688 384.17578 A 10.952579 21.585973 0 0 1 254.78125 373.38672 A 10.952579 21.585973 0 0 1 264.26562 384.17578 L 287.29297 462.78516 L 295.52734 490.89258 L 409.12891 490.89258 L 409.12891 444.85547 C 409.12891 359.34732 340.28939 290.50781 254.78125 290.50781 z M 236.375 317.17188 L 253.97656 317.17188 L 271.57617 317.17188 A 7.6880171 7.6880171 0 0 1 278.23242 328.70312 L 269.43359 343.94531 L 260.63281 359.1875 A 7.6880171 7.6880171 0 0 1 247.31836 359.1875 L 238.51758 343.94531 L 229.71875 328.70312 A 7.6880171 7.6880171 0 0 1 236.375 317.17188 z "
+       transform="scale(0.26458333)" />
+    <g
+       id="path1343"
+       transform="matrix(0.04295556,0,0,0.04295556,131.77554,97.263356)" />
+    <g
+       id="path1450"
+       transform="matrix(0.10762811,0,0,0.21211968,32.621124,142.21902)" />
+    <rect
+       style="fill:#ffffff;stroke:none;stroke-width:7.74969;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect2205"
+       width="50.904934"
+       height="6.1483178"
+       x="40.822105"
+       y="123.73367"
+       ry="0.52260697" />
+  </g>
+</svg>
