@@ -11,7 +11,7 @@
 
     <div class="home-icons">
         <div class="icon-list">
-            <a class="icon-link" href="">
+            <a class="icon-link" asp-controller="EventsList" asp-action="Index">
                 <img src="~/icons/List.svg" alt="list icon">
                 <div class="text-center icon-link-title ">
                     Events List
@@ -23,7 +23,7 @@
         </div>
 
         <div class="icon-add">
-            <a class="icon-link" href="">
+            <a class="icon-link"  asp-controller="Event" asp-action="Create" >
                 <img src="~/icons/add.svg" alt="add icon">
                 <div class="text-center icon-link-title ">
                     Add Event
@@ -35,7 +35,7 @@
         </div>
 
         <div class="icon-calendar">
-            <a class="icon-link" href="">
+            <a class="icon-link" asp-controller="User" asp-action="Calendar">
                 <img src="~/icons/calendar.svg" alt="calendar icon">
                 <div class="text-center icon-link-title ">
                     Calendar
@@ -47,7 +47,7 @@
         </div>
 
         <div class="icon-login">
-            <a class="icon-link" href="">
+            <a class="icon-link"  href="/Identity/Account/Login" >
                 <img src="~/icons/login.svg" alt="login icon">
                 <div class="text-center icon-link-title ">
                     Login
